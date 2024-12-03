@@ -12,18 +12,20 @@ class _AgeState extends State<Age> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(child:
-        Container(
-        width: double.infinity,
+      backgroundColor: const Color(0xFFFEFAF5),
+
+      body: SafeArea(
           child: Column(
-            children: [
-              CustomSteps(
-                stepNo: 'Step 1: Personal Information',
-              ),
-            ],
-          ),
-      )
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+          // Step Header with Progress Indicator Only
+          const CustomSteps(
+          currentStep: 1,
+          totalSteps: 3,
       ),
+      ],
+      ),
+    ),
     );
   }
 }

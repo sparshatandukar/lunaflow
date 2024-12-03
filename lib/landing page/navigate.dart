@@ -29,6 +29,7 @@ class _navigateState extends State<navigate> {
               btnName: 'Login',
               onPressed: () {},
             ),
+
             const SizedBox(height:10),
             Custombutton(
               btnName: 'Sign up',
