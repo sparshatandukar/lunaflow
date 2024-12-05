@@ -26,18 +26,18 @@ class CustomSteps extends StatelessWidget {
                 height: 30,
                 decoration: BoxDecoration(
                   color: isActive
-                      ? const Color(0xFFFF897A) // Active step color
-                      : const Color(0xFFFFE5E0), // Inactive step color
+                      ? const Color(0xFFffffff) // Active step color
+                      : const Color(0xFFEEA09C), // Inactive step color
                   borderRadius: BorderRadius.circular(15),
                   border: isActive
-                      ? Border.all(color: Colors.blue, width: 2) // Active step border
+                      ? Border.all(color: Color(0xFFEEA09C), width: 2) // Active step border
                       : Border.all(color: Colors.transparent),
                 ),
                 child: Center(
                   child: Text(
                     '${index + 1}',
                     style: TextStyle(
-                      color: isActive ? Colors.white : Colors.black,
+                      color: isActive ? Colors.black : Colors.white,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
