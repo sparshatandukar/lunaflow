@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lunaflow/widgets/layout/CustomSteps.dart';
+import 'package:lunaflow/widgets/layout/customsteps.dart';
 
 class Age extends StatefulWidget {
   const Age({super.key});
@@ -11,21 +11,20 @@ class Age extends StatefulWidget {
 class _AgeState extends State<Age> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xFFFEFAF5),
-
+    return const Scaffold(
+      backgroundColor: Color(0xFFFEFAF5),
       body: SafeArea(
-          child: Column(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-          // Step Header with Progress Indicator Only
-          const CustomSteps(
-          currentStep: 1,
-          totalSteps: 3,
+            // Step Header with Progress Indicator Only
+            CustomSteps(
+              currentStep: 1,
+              totalSteps: 3,
+            ),
+          ],
+        ),
       ),
-      ],
-      ),
-    ),
     );
   }
 }

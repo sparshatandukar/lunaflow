@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lunaflow/widgets/layout/CustomButton.dart';
+import 'package:lunaflow/widgets/layout/custombutton.dart';
 
 class navigate extends StatefulWidget {
   const navigate({super.key});
@@ -13,7 +13,7 @@ class _navigateState extends State<navigate> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFFEFAF5),
-      body: Container(
+      body: SizedBox(
         width: double.infinity,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -29,8 +29,7 @@ class _navigateState extends State<navigate> {
               btnName: 'Login',
               onPressed: () {},
             ),
-
-            const SizedBox(height:10),
+            const SizedBox(height: 10),
             Custombutton(
               btnName: 'Sign up',
               onPressed: () {},
