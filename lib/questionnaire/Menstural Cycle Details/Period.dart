@@ -4,14 +4,14 @@ import 'package:lunaflow/widgets/layout/CustomSteps.dart';
 import '../../widgets/layout/CustomQuest.dart';
 import '../../widgets/layout/CustomStepNo.dart';
 
-class FirstDay extends StatefulWidget {
-  const FirstDay({super.key});
+class Period extends StatefulWidget {
+  const Period({super.key});
 
   @override
-  State<FirstDay> createState() => _FirstDayState();
+  State<Period> createState() => _PeriodState();
 }
 
-class _FirstDayState extends State<FirstDay> {
+class _PeriodState extends State<Period> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,10 +25,10 @@ class _FirstDayState extends State<FirstDay> {
 
             // Step Header with Progress Indicator Only
             CustomSteps(
-              currentStep: 1,
+              currentStep: 2,
               totalSteps: 4,
             ),
-            Customquest(quest: "When was the first day of your last period?"),
+            Customquest(quest: "How long does your period usually last?"),
 
           ],
         ),

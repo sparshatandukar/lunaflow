@@ -4,14 +4,14 @@ import 'package:lunaflow/widgets/layout/CustomSteps.dart';
 import '../../widgets/layout/CustomQuest.dart';
 import '../../widgets/layout/CustomStepNo.dart';
 
-class FirstDay extends StatefulWidget {
-  const FirstDay({super.key});
+class Symptoms extends StatefulWidget {
+  const Symptoms({super.key});
 
   @override
-  State<FirstDay> createState() => _FirstDayState();
+  State<Symptoms> createState() => _SymptomsState();
 }
 
-class _FirstDayState extends State<FirstDay> {
+class _SymptomsState extends State<Symptoms> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,14 +21,14 @@ class _FirstDayState extends State<FirstDay> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Customstepno(stepNo: "Step 2: Menstrual Cycle Details"),
+            Customstepno(stepNo: "Step 3: Health and Symptoms"),
 
             // Step Header with Progress Indicator Only
             CustomSteps(
               currentStep: 1,
-              totalSteps: 4,
+              totalSteps: 3,
             ),
-            Customquest(quest: "When was the first day of your last period?"),
+            Customquest(quest: "Do you experience severe period symptoms? (Select all that apply)"),
 
           ],
         ),

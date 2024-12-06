@@ -4,14 +4,14 @@ import 'package:lunaflow/widgets/layout/CustomSteps.dart';
 import '../../widgets/layout/CustomQuest.dart';
 import '../../widgets/layout/CustomStepNo.dart';
 
-class FirstDay extends StatefulWidget {
-  const FirstDay({super.key});
+class Irregular extends StatefulWidget {
+  const Irregular({super.key});
 
   @override
-  State<FirstDay> createState() => _FirstDayState();
+  State<Irregular> createState() => _IrregularState();
 }
 
-class _FirstDayState extends State<FirstDay> {
+class _IrregularState extends State<Irregular> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,10 +25,10 @@ class _FirstDayState extends State<FirstDay> {
 
             // Step Header with Progress Indicator Only
             CustomSteps(
-              currentStep: 1,
+              currentStep: 4,
               totalSteps: 4,
             ),
-            Customquest(quest: "When was the first day of your last period?"),
+            Customquest(quest: "Do you experience irregular periods?"),
 
           ],
         ),
