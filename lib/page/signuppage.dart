@@ -105,8 +105,7 @@ class SignUpPage extends StatelessWidget {
                       // Sign Up functionality
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color.fromRGBO(
-                          238, 160, 156, 1), // Light pink color
+                      backgroundColor: const Color(0xFFEEA09C), // Light pink color
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12),
                       ),

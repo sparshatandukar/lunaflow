@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:lunaflow/page/loginpage.dart';
+import 'package:lunaflow/page/dashboard.dart';
+// import 'package:lunaflow/page/loginpage.dart';
+// import 'package:lunaflow/page/privacy.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,6 +19,6 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: const LoginPage());
+        home: const Dashboard());
   }
 }
