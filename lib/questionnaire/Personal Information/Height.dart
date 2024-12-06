@@ -3,14 +3,14 @@ import 'package:lunaflow/widgets/layout/CustomQuest.dart';
 import 'package:lunaflow/widgets/layout/CustomStepNo.dart';
 import 'package:lunaflow/widgets/layout/CustomSteps.dart';
 
-class Age extends StatefulWidget {
-  const Age({super.key});
+class Height extends StatefulWidget {
+  const Height({super.key});
 
   @override
-  State<Age> createState() => _AgeState();
+  State<Height> createState() => _HeightState();
 }
 
-class _AgeState extends State<Age> {
+class _HeightState extends State<Height> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
@@ -23,10 +23,10 @@ class _AgeState extends State<Age> {
 
             // Step Header with Progress Indicator Only
             CustomSteps(
-              currentStep: 1,
+              currentStep: 2,
               totalSteps: 3,
             ),
-            Customquest(quest: "What is your age?"),
+            Customquest(quest: "What is your weight and height? (Optional)"),
 
 
           ],

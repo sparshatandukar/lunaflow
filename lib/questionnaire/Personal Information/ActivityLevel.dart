@@ -23,10 +23,10 @@ class _AgeState extends State<Age> {
 
             // Step Header with Progress Indicator Only
             CustomSteps(
-              currentStep: 1,
+              currentStep: 3,
               totalSteps: 3,
             ),
-            Customquest(quest: "What is your age?"),
+            Customquest(quest: "What is your activity level?"),
 
 
           ],
