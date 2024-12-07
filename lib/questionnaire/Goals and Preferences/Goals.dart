@@ -4,14 +4,14 @@ import 'package:lunaflow/widgets/layout/CustomSteps.dart';
 import '../../widgets/layout/CustomQuest.dart';
 import '../../widgets/layout/CustomStepNo.dart';
 
-class Symptoms extends StatefulWidget {
-  const Symptoms({super.key});
+class Goals extends StatefulWidget {
+  const Goals({super.key});
 
   @override
-  State<Symptoms> createState() => _SymptomsState();
+  State<Goals> createState() => _GoalsState();
 }
 
-class _SymptomsState extends State<Symptoms> {
+class _GoalsState extends State<Goals> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,14 +21,14 @@ class _SymptomsState extends State<Symptoms> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Customstepno(stepNo: "Step 3: Health and Symptoms"),
+            Customstepno(stepNo: "Step 4: Goals and Preferences"),
 
             // Step Header with Progress Indicator Only
             CustomSteps(
-              currentStep: 2,
-              totalSteps: 3,
+              currentStep: 1,
+              totalSteps: 2,
             ),
-            Customquest(quest: "Do you experience severe period symptoms? (Select all that apply)"),
+            Customquest(quest: "What are your main goals for using Luna Flow? (Select all that apply)"),
 
           ],
         ),
