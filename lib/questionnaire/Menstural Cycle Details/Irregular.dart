@@ -14,9 +14,8 @@ class Irregular extends StatefulWidget {
 class _IrregularState extends State<Irregular> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xFFFEFAF5),
-
+    return const Scaffold(
+      backgroundColor: Color(0xFFFEFAF5),
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -29,7 +28,6 @@ class _IrregularState extends State<Irregular> {
               totalSteps: 4,
             ),
             Customquest(quest: "Do you experience irregular periods?"),
-
           ],
         ),
       ),

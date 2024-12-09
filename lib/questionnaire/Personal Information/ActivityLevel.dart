@@ -3,14 +3,14 @@ import 'package:lunaflow/widgets/layout/CustomQuest.dart';
 import 'package:lunaflow/widgets/layout/CustomStepNo.dart';
 import 'package:lunaflow/widgets/layout/CustomSteps.dart';
 
-class Age extends StatefulWidget {
-  const Age({super.key});
+class Activitylevel extends StatefulWidget {
+  const Activitylevel({super.key});
 
   @override
-  State<Age> createState() => _AgeState();
+  State<Activitylevel> createState() => _ActivitylevelState();
 }
 
-class _AgeState extends State<Age> {
+class _ActivitylevelState extends State<Activitylevel> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
@@ -27,8 +27,6 @@ class _AgeState extends State<Age> {
               totalSteps: 3,
             ),
             Customquest(quest: "What is your activity level?"),
-
-
           ],
         ),
       ),

@@ -14,9 +14,8 @@ class Track extends StatefulWidget {
 class _TrackState extends State<Track> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xFFFEFAF5),
-
+    return const Scaffold(
+      backgroundColor: Color(0xFFFEFAF5),
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -28,8 +27,8 @@ class _TrackState extends State<Track> {
               currentStep: 3,
               totalSteps: 3,
             ),
-            Customquest(quest: "Do you track your mood or symptoms during your cycle?"),
-
+            Customquest(
+                quest: "Do you track your mood or symptoms during your cycle?"),
           ],
         ),
       ),

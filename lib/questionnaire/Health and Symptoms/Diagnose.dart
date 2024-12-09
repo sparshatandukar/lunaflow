@@ -14,9 +14,8 @@ class Diagnose extends StatefulWidget {
 class _DiagnoseState extends State<Diagnose> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xFFFEFAF5),
-
+    return const Scaffold(
+      backgroundColor: Color(0xFFFEFAF5),
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -28,8 +27,9 @@ class _DiagnoseState extends State<Diagnose> {
               currentStep: 1,
               totalSteps: 3,
             ),
-            Customquest(quest: "Do you have any diagnosed health conditions? (Optional)"),
-
+            Customquest(
+                quest:
+                    "Do you have any diagnosed health conditions? (Optional)"),
           ],
         ),
       ),

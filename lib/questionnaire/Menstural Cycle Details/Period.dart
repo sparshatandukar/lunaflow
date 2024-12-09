@@ -14,9 +14,8 @@ class Period extends StatefulWidget {
 class _PeriodState extends State<Period> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xFFFEFAF5),
-
+    return const Scaffold(
+      backgroundColor: Color(0xFFFEFAF5),
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -29,7 +28,6 @@ class _PeriodState extends State<Period> {
               totalSteps: 4,
             ),
             Customquest(quest: "How long does your period usually last?"),
-
           ],
         ),
       ),

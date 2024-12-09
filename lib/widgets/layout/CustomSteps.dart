@@ -16,7 +16,7 @@ class CustomSteps extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: List.generate(
         totalSteps,
-            (index) {
+        (index) {
           final isActive = index + 1 == currentStep;
           return Row(
             children: [
@@ -30,15 +30,18 @@ class CustomSteps extends StatelessWidget {
                       : const Color(0xFFEEA09C), // Inactive step color
                   borderRadius: BorderRadius.circular(50),
                   border: isActive
-                      ? Border.all(color: Color(0xFFEEA09C), width: 2) // Active step border
-                      : Border.all(color: Color(0xFFEEA09C)),
+                      ? Border.all(
+                          color: const Color(0xFFEEA09C),
+                          width: 2) // Active step border
+                      : Border.all(color: const Color(0xFFEEA09C)),
                 ),
                 child: Center(
                   child: Text(
                     '${index + 1}',
                     style: TextStyle(
                       color: isActive ? Colors.black : Colors.white,
-                      fontWeight: FontWeight.bold, fontSize: 25,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 25,
                     ),
                   ),
                 ),

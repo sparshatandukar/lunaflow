@@ -14,9 +14,8 @@ class Length extends StatefulWidget {
 class _LengthState extends State<Length> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xFFFEFAF5),
-
+    return const Scaffold(
+      backgroundColor: Color(0xFFFEFAF5),
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -28,8 +27,9 @@ class _LengthState extends State<Length> {
               currentStep: 3,
               totalSteps: 4,
             ),
-            Customquest(quest: "What is the average length of your menstrual cycle (from the start of one period to the next)?"),
-
+            Customquest(
+                quest:
+                    "What is the average length of your menstrual cycle (from the start of one period to the next)?"),
           ],
         ),
       ),

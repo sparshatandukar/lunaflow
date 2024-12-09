@@ -14,9 +14,8 @@ class FirstDay extends StatefulWidget {
 class _FirstDayState extends State<FirstDay> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xFFFEFAF5),
-
+    return const Scaffold(
+      backgroundColor: Color(0xFFFEFAF5),
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -29,7 +28,6 @@ class _FirstDayState extends State<FirstDay> {
               totalSteps: 4,
             ),
             Customquest(quest: "When was the first day of your last period?"),
-
           ],
         ),
       ),

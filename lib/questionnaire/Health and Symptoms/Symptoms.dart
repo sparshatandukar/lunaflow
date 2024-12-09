@@ -14,9 +14,8 @@ class Symptoms extends StatefulWidget {
 class _SymptomsState extends State<Symptoms> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xFFFEFAF5),
-
+    return const Scaffold(
+      backgroundColor: Color(0xFFFEFAF5),
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -28,8 +27,9 @@ class _SymptomsState extends State<Symptoms> {
               currentStep: 2,
               totalSteps: 3,
             ),
-            Customquest(quest: "Do you experience severe period symptoms? (Select all that apply)"),
-
+            Customquest(
+                quest:
+                    "Do you experience severe period symptoms? (Select all that apply)"),
           ],
         ),
       ),

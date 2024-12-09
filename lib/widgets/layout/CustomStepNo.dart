@@ -13,13 +13,9 @@ class _CustomstepnoState extends State<Customstepno> {
   Widget build(BuildContext context) {
     return Text(
       widget.stepNo,
-      style: TextStyle(
-      fontSize: 30,
-
-
-    ),
-
-
+      style: const TextStyle(
+        fontSize: 30,
+      ),
     );
   }
 }

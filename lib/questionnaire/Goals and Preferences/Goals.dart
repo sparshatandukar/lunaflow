@@ -14,9 +14,8 @@ class Goals extends StatefulWidget {
 class _GoalsState extends State<Goals> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xFFFEFAF5),
-
+    return const Scaffold(
+      backgroundColor: Color(0xFFFEFAF5),
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -28,8 +27,9 @@ class _GoalsState extends State<Goals> {
               currentStep: 1,
               totalSteps: 2,
             ),
-            Customquest(quest: "What are your main goals for using Luna Flow? (Select all that apply)"),
-
+            Customquest(
+                quest:
+                    "What are your main goals for using Luna Flow? (Select all that apply)"),
           ],
         ),
       ),

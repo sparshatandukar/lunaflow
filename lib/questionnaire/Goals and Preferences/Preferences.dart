@@ -14,9 +14,8 @@ class Preferences extends StatefulWidget {
 class _PreferencesState extends State<Preferences> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xFFFEFAF5),
-
+    return const Scaffold(
+      backgroundColor: Color(0xFFFEFAF5),
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -28,8 +27,8 @@ class _PreferencesState extends State<Preferences> {
               currentStep: 2,
               totalSteps: 2,
             ),
-            Customquest(quest: "How would you prefer to receive updates and tips?"),
-
+            Customquest(
+                quest: "How would you prefer to receive updates and tips?"),
           ],
         ),
       ),

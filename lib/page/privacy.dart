@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lunaflow/questionnaire/Personal%20Information/Age.dart';
 
 class privacy extends StatefulWidget {
   const privacy({super.key});
@@ -93,7 +94,10 @@ class _privacyState extends State<privacy> {
                 Expanded(
                   child: ElevatedButton(
                     onPressed: () {
-                      // Implement Next functionality here
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const Age()),
+                      );
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFFE0A29E),
