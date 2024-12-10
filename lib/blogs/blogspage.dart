@@ -8,13 +8,23 @@ class Blogpage extends StatefulWidget {
 }
 
 class _BlogpageState extends State<Blogpage> {
+  // For controlling the TabBar or PageView
+  int _selectedIndex = 0;
+  final TextEditingController _searchController = TextEditingController();
+
+  // Function to change the selected index
+  void _onTabTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.pink[100],
         title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             // Add button on the left side
             GestureDetector(
@@ -32,21 +42,25 @@ class _BlogpageState extends State<Blogpage> {
                 ),
               ),
             ),
-            // Blogs title in the center
+            SizedBox(width: 10), // Add space between the add button and the search bar
+            // Search Bar beside the Add button
             Expanded(
-              child: Center(
-                child: Text(
-                  'Blogs',
-                  style: TextStyle(color: Colors.black),
+              child: TextField(
+                controller: _searchController,
+                decoration: InputDecoration(
+                  hintText: 'Search...',
+                  prefixIcon: Icon(Icons.search),
+                  border: OutlineInputBorder(),
+                  contentPadding: EdgeInsets.symmetric(vertical: 12.0),
                 ),
               ),
             ),
-            // Search icon on the right side
+            // Chat icon on the right side
             IconButton(
-              icon: Icon(Icons.search, color: Colors.black),
+              icon: Icon(Icons.chat, color: Colors.black),
               onPressed: () {
-                // Handle search icon action here
-                print("Search button tapped");
+                // Handle chat icon action here
+                print("Chat button tapped");
               },
             ),
           ],
@@ -55,29 +69,64 @@ class _BlogpageState extends State<Blogpage> {
       ),
       body: Column(
         children: [
-          // Filter buttons
+          // Buttons for Blog and PCOS
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.symmetric(vertical: 8.0),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Chip(label: Text('Diet')),
-                Chip(label: Text('Exercise')),
-                Chip(label: Text('Life-style')),
+                ElevatedButton(
+                  onPressed: () {
+                    _onTabTapped(0); // Navigate to Blog section
+                  },
+                  child: Text('Blog'),
+                ),
+                SizedBox(width: 10),
+                ElevatedButton(
+                  onPressed: () {
+                    _onTabTapped(1); // Navigate to PCOS section
+                  },
+                  child: Text('PCOS'),
+                ),
               ],
             ),
           ),
-          // Blog list
+
+          // The content display based on button selection
           Expanded(
-            child: ListView(
+            child: IndexedStack(
+              index: _selectedIndex,
               children: [
-                BlogCard(
-                  imageUrl: 'https://via.placeholder.com/150',
-                  description: 'Good diet',
+                // Blog content
+                SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      BlogCard(
+                        imageUrl: 'https://via.placeholder.com/150',
+                        description: 'Good diet',
+                      ),
+                      BlogCard(
+                        imageUrl: 'https://via.placeholder.com/150',
+                        description: 'Healthy eating',
+                      ),
+                    ],
+                  ),
                 ),
-                BlogCard(
-                  imageUrl: 'https://via.placeholder.com/150',
-                  description: 'Healthy eating',
+
+                // PCOS content
+                SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      BlogCard(
+                        imageUrl: 'https://via.placeholder.com/150',
+                        description: 'PCOS Treatment 1',
+                      ),
+                      BlogCard(
+                        imageUrl: 'https://via.placeholder.com/150',
+                        description: 'PCOS Treatment 2',
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
