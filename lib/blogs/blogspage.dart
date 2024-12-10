@@ -8,16 +8,8 @@ class Blogpage extends StatefulWidget {
 }
 
 class _BlogpageState extends State<Blogpage> {
-  // For controlling the TabBar or PageView
   int _selectedIndex = 0;
   final TextEditingController _searchController = TextEditingController();
-
-  // Function to change the selected index
-  void _onTabTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,10 +18,9 @@ class _BlogpageState extends State<Blogpage> {
         backgroundColor: Colors.pink[100],
         title: Row(
           children: [
-            // Add button on the left side
+            // Add button on the left
             GestureDetector(
               onTap: () {
-                // Handle add button action here
                 print("Add button tapped");
               },
               child: CircleAvatar(
@@ -42,8 +33,8 @@ class _BlogpageState extends State<Blogpage> {
                 ),
               ),
             ),
-            SizedBox(width: 10), // Add space between the add button and the search bar
-            // Search Bar beside the Add button
+            SizedBox(width: 10),
+            // Search bar
             Expanded(
               child: TextField(
                 controller: _searchController,
@@ -55,11 +46,10 @@ class _BlogpageState extends State<Blogpage> {
                 ),
               ),
             ),
-            // Chat icon on the right side
+            // Chat button on the right
             IconButton(
               icon: Icon(Icons.chat, color: Colors.black),
               onPressed: () {
-                // Handle chat icon action here
                 print("Chat button tapped");
               },
             ),
@@ -69,7 +59,7 @@ class _BlogpageState extends State<Blogpage> {
       ),
       body: Column(
         children: [
-          // Buttons for Blog and PCOS
+          // Blog and PCOS buttons
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 8.0),
             child: Row(
@@ -77,14 +67,14 @@ class _BlogpageState extends State<Blogpage> {
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    _onTabTapped(0); // Navigate to Blog section
+                    print("Blog Button tapped");
                   },
                   child: Text('Blog'),
                 ),
                 SizedBox(width: 10),
                 ElevatedButton(
                   onPressed: () {
-                    _onTabTapped(1); // Navigate to PCOS section
+                    print("PCOS Button tapped");
                   },
                   child: Text('PCOS'),
                 ),
@@ -92,7 +82,7 @@ class _BlogpageState extends State<Blogpage> {
             ),
           ),
 
-          // The content display based on button selection
+          // Display content based on selected tab
           Expanded(
             child: IndexedStack(
               index: _selectedIndex,
@@ -130,6 +120,51 @@ class _BlogpageState extends State<Blogpage> {
                 ),
               ],
             ),
+          ),
+        ],
+      ),
+
+      // Bottom navigation bar with circles (no action on tap)
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedIndex,
+        onTap: (int index) {}, // Empty function, no navigation on tap
+        type: BottomNavigationBarType.fixed, // Fixed layout for items
+        iconSize: 24, // Size of the circle icons
+        items: [
+          BottomNavigationBarItem(
+            icon: CircleAvatar(
+              radius: 12,
+              backgroundColor: Colors.pink,
+            ),
+            label: '',
+          ),
+          BottomNavigationBarItem(
+            icon: CircleAvatar(
+              radius: 12,
+              backgroundColor: Colors.blue,
+            ),
+            label: '',
+          ),
+          BottomNavigationBarItem(
+            icon: CircleAvatar(
+              radius: 12,
+              backgroundColor: Colors.green,
+            ),
+            label: '',
+          ),
+          BottomNavigationBarItem(
+            icon: CircleAvatar(
+              radius: 12,
+              backgroundColor: Colors.orange,
+            ),
+            label: '',
+          ),
+          BottomNavigationBarItem(
+            icon: CircleAvatar(
+              radius: 12,
+              backgroundColor: Colors.purple,
+            ),
+            label: '',
           ),
         ],
       ),
