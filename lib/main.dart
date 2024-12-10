@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lunaflow/blogs/blogspage.dart';
 import 'package:lunaflow/landing%20page/navigate.dart';
 import 'package:lunaflow/landing%20page/welcomepage.dart';
 import 'package:lunaflow/landing%20page/welcometo.dart';
@@ -38,7 +39,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const Goals(),
+      home: const Blogpage(),
     );
   }
 }
