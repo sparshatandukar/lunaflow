@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lunaflow/chat/community_chart.dart';
 import 'package:lunaflow/landing%20page/welcomepage.dart';
 
 void main() {
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      home: const WelcomePage(),
+      home: const CommunityChat(),
     );
   }
 }
