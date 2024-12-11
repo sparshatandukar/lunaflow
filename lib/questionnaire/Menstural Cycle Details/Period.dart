@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:lunaflow/widgets/layout/CustomQuest.dart';
+import 'package:lunaflow/widgets/layout/CustomStepNo.dart';
 import 'package:lunaflow/widgets/layout/CustomSteps.dart';
-
-import '../../widgets/layout/CustomQuest.dart';
-import '../../widgets/layout/CustomStepNo.dart';
 
 class Period extends StatefulWidget {
   const Period({super.key});
@@ -12,24 +11,83 @@ class Period extends StatefulWidget {
 }
 
 class _PeriodState extends State<Period> {
+  String? selectedDuration; // State variable for the selected duration
+  final List<String> durations = [
+    "3-4 days",
+    "5-6 days",
+    "7+ days",
+  ]; // Options for period duration
+
   @override
   Widget build(BuildContext context) {
+    final args = ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
+
     return Scaffold(
       backgroundColor: const Color(0xFFFEFAF5),
-
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Customstepno(stepNo: "Step 2: Menstrual Cycle Details"),
-
-            // Step Header with Progress Indicator Only
-            CustomSteps(
+            const SizedBox(height: 50),
+            const Customstepno(stepNo: "Step 2: Menstrual Cycle Details"),
+            const SizedBox(height: 50),
+            const CustomSteps(
               currentStep: 2,
               totalSteps: 4,
             ),
-            Customquest(quest: "How long does your period usually last?"),
-
+            const SizedBox(height: 50),
+            const Customquest(quest: "How long does your period usually last?"),
+            const SizedBox(height: 50),
+            // Dropdown Menu for Period Duration
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: DropdownButtonFormField<String>(
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  filled: true,
+                  fillColor: Colors.white,
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
+                ),
+                value: selectedDuration,
+                hint: const Text("Select Duration"),
+                onChanged: (value) {
+                  setState(() {
+                    selectedDuration = value!;
+                  });
+                },
+                items: durations.map((duration) {
+                  return DropdownMenuItem<String>(
+                    value: duration,
+                    child: Text(duration),
+                  );
+                }).toList(),
+              ),
+            ),
+            const SizedBox(height: 30),
+            // "Next" Button
+            ElevatedButton(
+              onPressed: selectedDuration == null
+                  ? null
+                  : () {
+                Navigator.pushNamed(
+                  context,
+                  '/length',
+                  arguments: {
+                    ...args,
+                    'selectedDuration': selectedDuration,
+                  },
+                );
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color(0xFFEFB8B8),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+              ),
+              child: const Text("Next"),
+            ),
           ],
         ),
       ),
