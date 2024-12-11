@@ -21,6 +21,9 @@ class _PrivacyState extends State<Privacy> {
 
   @override
   Widget build(BuildContext context) {
+    final args =
+        ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
+    final userId = args['userId']; // Get the user ID
     return Scaffold(
       backgroundColor: const Color(0xFFFDF8F6),
       appBar: AppBar(
@@ -94,9 +97,16 @@ class _PrivacyState extends State<Privacy> {
                 Expanded(
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.push(
+                      Navigator.pushNamed(
                         context,
-                        MaterialPageRoute(builder: (context) => const Age()),
+                        '/age', // Replace with your actual route
+                        arguments: {
+                          'userId': userId,
+                          'checkbox1': _checkboxValues[0],
+                          'checkbox2': _checkboxValues[1],
+                          'checkbox3': _checkboxValues[2],
+                          'checkbox4': _checkboxValues[3],
+                        },
                       );
                     },
                     style: ElevatedButton.styleFrom(

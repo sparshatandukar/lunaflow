@@ -25,9 +25,10 @@ class _SignUpState extends State<SignUp> {
   String _base64Image = "";
   final picker = ImagePicker();
   File? _image;
-  final AuthService _authService= AuthService();
+  final AuthService _authService = AuthService();
   Future uploadImg() async {
-    final XFile? pickedImage = await picker.pickImage(source: ImageSource.gallery);
+    final XFile? pickedImage =
+        await picker.pickImage(source: ImageSource.gallery);
     if (pickedImage != null) {
       final bytes = await pickedImage.readAsBytes();
       setState(() {
@@ -80,7 +81,7 @@ class _SignUpState extends State<SignUp> {
                       labelText: 'Full Name',
                       hintText: 'Enter your name',
                       prefixIcon:
-                      const Icon(Icons.person_outline, color: Colors.grey),
+                          const Icon(Icons.person_outline, color: Colors.grey),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
                       ),
@@ -97,7 +98,8 @@ class _SignUpState extends State<SignUp> {
                       if (value == null || value.isEmpty) {
                         return 'Please enter your email';
                       }
-                      if (!RegExp(r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}")
+                      if (!RegExp(
+                              r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}")
                           .hasMatch(value)) {
                         return 'Enter a valid email';
                       }
@@ -107,7 +109,7 @@ class _SignUpState extends State<SignUp> {
                       labelText: 'E-mail',
                       hintText: 'Enter your e-mail here',
                       prefixIcon:
-                      const Icon(Icons.email_outlined, color: Colors.grey),
+                          const Icon(Icons.email_outlined, color: Colors.grey),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
                       ),
@@ -134,7 +136,7 @@ class _SignUpState extends State<SignUp> {
                       labelText: 'Password',
                       hintText: 'Enter your password',
                       prefixIcon:
-                      const Icon(Icons.lock_outline, color: Colors.grey),
+                          const Icon(Icons.lock_outline, color: Colors.grey),
                       suffixIcon: IconButton(
                         icon: Icon(
                           isPasswordVisible
@@ -217,19 +219,30 @@ class _SignUpState extends State<SignUp> {
                           isLoading = true;
                         });
 
-                        await _authService.signUp(
+                        // Call signUp and get the user ID
+                        String? userId = await _authService.signUp(
                           context,
                           email,
                           password,
                           name,
                           'checked',
-                          _base64Image
+                          _base64Image,
                         );
 
                         setState(() {
                           isLoading = false;
                         });
-                        Navigator.pushReplacementNamed(context, '/login');
+
+                        if (userId != null) {
+                          // Navigate to the next page with the user ID
+                          Navigator.pushNamed(
+                            context,
+                            '/privacy', // Replace with your actual route
+                            arguments: {
+                              'userId': userId
+                            }, // Pass the user ID as an argument
+                          );
+                        }
                       } else if (!isChecked) {
                         setState(() {
                           error = "Please accept the terms and conditions";
@@ -243,13 +256,12 @@ class _SignUpState extends State<SignUp> {
                       ),
                       padding: const EdgeInsets.symmetric(vertical: 16),
                     ),
-                    child:  const Row(
+                    child: const Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
                           'Sign Up',
-                          style:
-                          TextStyle(color: Colors.white, fontSize: 16),
+                          style: TextStyle(color: Colors.white, fontSize: 16),
                         ),
                         SizedBox(width: 8),
                         Icon(Icons.arrow_forward, color: Colors.white),

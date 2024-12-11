@@ -13,6 +13,8 @@ class Activitylevel extends StatefulWidget {
 class _ActivitylevelState extends State<Activitylevel> {
   @override
   Widget build(BuildContext context) {
+    final args =
+    ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
     return const Scaffold(
       backgroundColor: Color(0xFFFEFAF5),
       body: SafeArea(

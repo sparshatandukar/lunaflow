@@ -34,7 +34,7 @@ class AuthService {
     });
   }
 
-  Future<void> signUp(
+  Future<String?> signUp(
       BuildContext context,
       String email,
       String password,
@@ -47,12 +47,12 @@ class AuthService {
       UserCredential result = await _auth.createUserWithEmailAndPassword(
         email: email,
         password: password,
-      );  _showSnackBar(context, "$result failed", Colors.red);
+      );
       User? user = result.user;
 
       if (user == null) {
         _showSnackBar(context, "Registration failed", Colors.red);
-        return;
+        return null;
       }
 
       // Save user data to Firestore
@@ -65,14 +65,17 @@ class AuthService {
       );
 
       _showSnackBar(context, "User registered successfully!", Colors.green);
+      return user.uid; // Return the user ID
     } catch (e) {
       _showSnackBar(
         context,
         "Registration failed: ${e.toString()}",
         Colors.red,
       );
+      return null;
     }
   }
+
 
   // Helper function to show a snackbar
   void _showSnackBar(BuildContext context, String message, Color color) {

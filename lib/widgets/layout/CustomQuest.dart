@@ -13,13 +13,9 @@ class _CustomquestState extends State<Customquest> {
   Widget build(BuildContext context) {
     return Text(
       widget.quest,
-      style: TextStyle(
+      style: const TextStyle(
         fontSize: 30,
-
-
       ),
-
-
     );
   }
 }
