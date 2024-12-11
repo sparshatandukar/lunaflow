@@ -11,10 +11,13 @@ class Customquest extends StatefulWidget {
 class _CustomquestState extends State<Customquest> {
   @override
   Widget build(BuildContext context) {
-    return Text(
-      widget.quest,
-      style: const TextStyle(
-        fontSize: 30,
+    return Center(
+      child: Text(
+        widget.quest,
+        style: const TextStyle(
+          fontSize: 30,
+        ),
+        textAlign: TextAlign.center,
       ),
     );
   }
