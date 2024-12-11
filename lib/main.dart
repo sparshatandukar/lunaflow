@@ -6,6 +6,7 @@ import 'package:lunaflow/blogs/blogspage.dart';
 import 'package:lunaflow/landing%20page/navigate.dart';
 import 'package:lunaflow/landing%20page/welcomepage.dart';
 import 'package:lunaflow/landing%20page/welcometo.dart';
+import 'package:lunaflow/pages/dashboard.dart';
 import 'package:lunaflow/questionnaire/Goals%20and%20Preferences/Goals.dart';
 import 'package:lunaflow/questionnaire/Goals%20and%20Preferences/Preferences.dart';
 import 'package:lunaflow/questionnaire/Health%20and%20Symptoms/Diagnose.dart';
@@ -82,6 +83,8 @@ class MyApp extends StatelessWidget {
           '/goal': (context) => const Goals(),
           '/preference': (context) => const Preferences(),
           '/login': (context) => const Login(),
+          '/dashboard': (context) => const Dashboard(),
+
         },
       ),
     );

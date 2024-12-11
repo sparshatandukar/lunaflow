@@ -87,6 +87,51 @@ class AuthService {
       ),
     );
   }
+  Future<UserModel?> userLogIn(
+      BuildContext context, String email, String password) async {
+    try {
+      UserCredential result = await _auth.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      _showSnackBar(
+        context,
+        "lOGIN SUCCESSFUL",
+        Colors.green,
+      );
+      User? user = result.user;
+      if (user == null) {
+        _showSnackBar(
+          context,
+          "lOGIN FAILED",
+          Colors.red,
+        );
+        return null;
+      }
+      DocumentSnapshot userDoc = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(user.uid)
+          .get();
+
+      if (!userDoc.exists) {
+        _showSnackBar(
+          context,
+          "Login failed",
+          Colors.red,
+        );
+        return null;
+      }  Map<String, dynamic> data = userDoc.data() as Map<String, dynamic>;
+      return _userFromFirebaseUser(user, data);
+    } catch (e) {
+      _showSnackBar(
+        context,
+        "Login failed $e",
+        Colors.red,
+      );
+      return null;
+    }
+  }
+
 
 // Additional methods can go here...
 }
