@@ -1,6 +1,12 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
+
+import '../services/auth/auth.dart';
+import '../services/period_logs.dart';
+import '../services/user_model.dart';
 
 class CyclePage extends StatefulWidget {
   const CyclePage({super.key});
@@ -10,18 +16,44 @@ class CyclePage extends StatefulWidget {
 }
 
 class _CyclePageState extends State<CyclePage> {
+  List<String> symptoms = [];
+  String mood = '';
   DateTime? selectedDate;
+  DateTime nextPeriod = DateTime.now();
+  bool isLoader = false;
+
+  Future<void> fetchUserData() async {
+    try {
+      setState(() {
+        isLoader = true;
+      });
+      final user = Provider.of<UserModel?>(context, listen: false);
+      final nextPeriodDate = await AuthService().getNextPeriodDate(user!.uid);
+
+      setState(() {
+        isLoader = false;
+        nextPeriod = nextPeriodDate ?? DateTime.now();
+      });
+    } catch (e) {
+      setState(() {
+        isLoader = false;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return isLoader
+        ? const Center(child: CircularProgressIndicator())
+        : Scaffold(
       backgroundColor: const Color(0xFFFDF8F6),
       appBar: AppBar(
         backgroundColor: const Color(0xFFFDF8F6),
         elevation: 0,
         title: const Text(
           'Period Tracker',
-          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+          style:
+          TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
       ),
@@ -69,7 +101,6 @@ class _CyclePageState extends State<CyclePage> {
             ),
           ),
           const SizedBox(height: 16),
-          // CalendarDatePicker widget
           CalendarDatePicker(
             initialDate: DateTime.now(),
             firstDate: DateTime(2000),
@@ -81,10 +112,31 @@ class _CyclePageState extends State<CyclePage> {
             },
           ),
           const SizedBox(height: 16),
-          // Display selected date
+          if (selectedDate == null)
+            Row(
+              children: [
+                const Text(
+                  'Last Period :',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
+                ),
+                const SizedBox(width: 10),
+                Text(
+                  DateFormat('dd MMM yyyy').format(nextPeriod),
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
+                ),
+              ],
+            ),
           if (selectedDate != null)
             Text(
-              "Selected Date: ${selectedDate!.toLocal()}",
+              "Selected Date: ${DateFormat('dd MMM yyyy').format(selectedDate!)}",
               style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
@@ -111,9 +163,9 @@ class _CyclePageState extends State<CyclePage> {
         ],
       ),
       padding: const EdgeInsets.all(16),
-      child: Column(
+      child: const Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [
+        children: [
           Text(
             'Last Period Record',
             style: TextStyle(
@@ -171,24 +223,34 @@ class _CyclePageState extends State<CyclePage> {
                 const Color.fromARGB(255, 235, 180, 99),
               ];
               final images = [
-                'assets/sad.png',
-                'assets/angry.png',
-                'assets/neutral.png',
-                'assets/amaze.png',
-                'assets/amaze.png',
+                'image/sad.png',
+                'image/angry.png',
+                'image/neutral.png',
+                'image/amaze.png',
+                'image/amaze.png',
               ];
-              return Column(
-                children: [
-                  CircleAvatar(
-                    backgroundColor: colors[index],
-                    foregroundImage: AssetImage(images[index]),
-                    radius: 24,
-                  ),
-                  const SizedBox(height: 8),
-                  Text(moods[index],
-                      style:
-                      const TextStyle(fontSize: 12, color: Colors.black)),
-                ],
+              return GestureDetector(
+                onTap: () {
+                  setState(() {
+                    mood = moods[index];
+                  });
+                },
+                child: Column(
+                  children: [
+                    CircleAvatar(
+                      backgroundColor: mood == moods[index]
+                          ? Colors.blueAccent
+                          : colors[index],
+                      foregroundImage: AssetImage(images[index]),
+                      radius: 24,
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      moods[index],
+                      style: const TextStyle(fontSize: 12, color: Colors.black),
+                    ),
+                  ],
+                ),
               );
             }),
           ),
@@ -225,31 +287,95 @@ class _CyclePageState extends State<CyclePage> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: List.generate(4, (indexs) {
-              final symptoms = ['All Good', 'Headache', 'Cramps', 'Acne'];
+              final symptomsList = ['All Good', 'Headache', 'Cramps', 'Acne'];
               final image = [
-                'assets/happy-face.png',
-                'assets/headache.png',
-                'assets/stomach.png',
-                'assets/acne.png',
+                'image/happy-face.png',
+                'image/headache.png',
+                'image/stomach.png',
+                'image/acne.png',
               ];
 
-              return Column(
-                children: [
-                  CircleAvatar(
-                    backgroundColor: Colors.pink[100],
-                    foregroundImage: AssetImage(image[indexs]),
-                    radius: 24,
-                  ),
-                  const SizedBox(height: 8),
-                  Text(symptoms[indexs],
-                      style:
-                      const TextStyle(fontSize: 12, color: Colors.black)),
-                ],
+              return GestureDetector(
+                onTap: () {
+                  setState(() {
+                    if (symptoms.contains(symptomsList[indexs])) {
+                      symptoms.remove(symptomsList[indexs]);
+                    } else {
+                      symptoms.add(symptomsList[indexs]);
+                    }
+                  });
+                },
+                child: Column(
+                  children: [
+                    CircleAvatar(
+                      backgroundColor: symptoms.contains(symptomsList[indexs])
+                          ? Colors.pinkAccent
+                          : Colors.pink[100],
+                      foregroundImage: AssetImage(image[indexs]),
+                      radius: 24,
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      symptomsList[indexs],
+                      style: const TextStyle(fontSize: 12, color: Colors.black),
+                    ),
+                  ],
+                ),
               );
             }),
+          ),
+          const SizedBox(height: 16),
+          ElevatedButton(
+            onPressed: () async {
+              setState(() {
+
+                isLoader=true;
+              });
+              final user = Provider.of<UserModel?>(context, listen: false);
+              if (user != null) {
+                final date = selectedDate != null
+                    ? DateFormat('yyyy-MM-dd').format(selectedDate!)
+                    : DateFormat('yyyy-MM-dd').format(DateTime.now());
+
+                await PeriodLogs().savePeriodLogs(
+                  userId: user.uid,
+                  date: date,
+                  mood: mood,
+                  symptoms: symptoms,
+                );
+                setState(() {
+
+                  isLoader=false;
+                });
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('Period log updated!')),
+                );
+                Navigator.pushReplacementNamed(context, '/dashboard');
+              }
+            },
+            style: ElevatedButton.styleFrom(
+              backgroundColor: const Color.fromRGBO(238, 160, 156, 1),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+              padding: const EdgeInsets.symmetric(vertical: 16),
+            ),
+            child: const Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Update',
+                  style: TextStyle(color: Colors.white, fontSize: 16),
+                ),
+                SizedBox(width: 8),
+                Icon(Icons.arrow_forward, color: Colors.white),
+              ],
+            ),
           ),
         ],
       ),
     );
   }
 }
+
+

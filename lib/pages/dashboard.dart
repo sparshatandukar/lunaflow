@@ -153,7 +153,9 @@ class _DashboardState extends State<Dashboard> {
                                   ),
                                   const SizedBox(height: 16),
                                   ElevatedButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      Navigator.pushReplacementNamed(context, '/cycle');
+                                    },
                                     style: ElevatedButton.styleFrom(
                                       backgroundColor: const Color(0xFFEEA09C),
                                       foregroundColor: Colors.white,

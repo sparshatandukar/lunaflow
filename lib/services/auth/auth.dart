@@ -157,7 +157,7 @@ class AuthService {
   Future<DateTime?> getNextPeriodDate(String userId) async {
     try {
       // Fetch user document from Firestore
-      final userDoc = await FirebaseFirestore.instance.collection('questions')
+      final userDoc = await FirebaseFirestore.instance.collection('period_logs')
           .where('userId', isEqualTo: userId)
           .get();
 

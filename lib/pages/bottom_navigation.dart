@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lunaflow/pages/communitypage.dart';
 import 'package:lunaflow/pages/cycle_page.dart';
 import 'package:lunaflow/pages/dashboard.dart';
 import 'package:lunaflow/services/user_model.dart';
@@ -28,7 +29,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
       const Dashboard(),
       const CyclePage(),
       const CyclePage(),
-      const CyclePage(),
+      const CommunityPage(),
       const CyclePage()
     ];
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lunaflow/services/period_logs.dart';
 import 'package:lunaflow/services/questionnarie_db.dart';
 import 'package:lunaflow/widgets/layout/CustomSteps.dart';
 import '../../widgets/layout/CustomQuest.dart';
@@ -125,7 +126,7 @@ class _PreferencesState extends State<Preferences> {
                       selectedGoals: data['selectedGoals'],
                       preference: data['preference'],
                     );
-
+                    await PeriodLogs().savePeriodLogs(userId: data['userId'], date: data['date'], mood: '', symptoms: []);
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(content: Text("Questionnaire saved successfully!")),
                     );
