@@ -19,6 +19,7 @@ import 'package:lunaflow/questionnaire/Menstural%20Cycle%20Details/Period.dart';
 import 'package:lunaflow/questionnaire/Personal%20Information/ActivityLevel.dart';
 import 'package:lunaflow/questionnaire/Personal%20Information/Age.dart';
 import 'package:lunaflow/questionnaire/Personal%20Information/Height.dart';
+import 'package:lunaflow/server_test.dart';
 import 'package:lunaflow/services/auth/auth.dart';
 import 'package:lunaflow/services/user_model.dart';
 
@@ -66,7 +67,6 @@ class MyApp extends StatelessWidget {
         ),
         routes: {
           '/': (context) => const WelcomePage(),
-
           //authentication routes
           '/sign_up': (context) => const SignUp(),
           '/privacy': (context) => const Privacy(),
@@ -83,6 +83,8 @@ class MyApp extends StatelessWidget {
           '/goal': (context) => const Goals(),
           '/preference': (context) => const Preferences(),
           '/login': (context) => const Login(),
+          '/server': (context) => const ServerTest(),
+
           '/dashboard': (context) => const Dashboard(),
 
         },

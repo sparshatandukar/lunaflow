@@ -45,7 +45,9 @@ class _SignUpState extends State<SignUp> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return isLoading
+        ? const Center(child: CircularProgressIndicator())
+        :Scaffold(
       backgroundColor: const Color(0xFFFDF8F6), // Light beige background
       body: SafeArea(
         child: SingleChildScrollView(

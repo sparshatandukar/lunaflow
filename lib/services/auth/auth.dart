@@ -132,6 +132,86 @@ class AuthService {
     }
   }
 
+  Future<List> getCurrentUser(
+      BuildContext context, String uid, ) async {
+    try {
+      final DocumentSnapshot userSnapshot = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(uid)
+          .get();
 
-// Additional methods can go here...
+      if (!userSnapshot.exists) {
+        return [];
+      }
+
+      final data = userSnapshot.data() as Map<String, dynamic>;
+      return [
+        {
+          'user': {...data, 'id': userSnapshot.id},
+        }
+      ];
+    } catch (e) {
+      throw Exception("Failed to fetch user data: $e");
+    }
+  }
+  Future<DateTime?> getNextPeriodDate(String userId) async {
+    try {
+      // Fetch user document from Firestore
+      final userDoc = await FirebaseFirestore.instance.collection('questions')
+          .where('userId', isEqualTo: userId)
+          .get();
+
+      if (userDoc.docs.isEmpty) {
+        print("User data not found");
+        return null;
+      }
+
+      final data = userDoc.docs.first.data();
+
+      // Retrieve and parse the last period date
+      final lastPeriodDateString = data['date'] as String? ?? ''; // Default to empty string if null
+      final lastPeriodDate = parseDate(lastPeriodDateString);
+      if (lastPeriodDate == null) {
+        print("Invalid or missing last period date");
+        return null;
+      }
+
+      // Retrieve and parse the cycle length
+      final cycleLengthRange = data['selectedCycleLength'] as String? ?? ''; // Default to empty string if null
+      final cycleLength = parseCycleLength(cycleLengthRange);
+
+      // Calculate the next period date
+      final nextPeriodDate = lastPeriodDate.add(Duration(days: cycleLength));
+      print("Next period date: $nextPeriodDate");
+      return nextPeriodDate;
+    } catch (e) {
+      print("Error calculating next period date: $e");
+      return null;
+    }
+  }
+
+  // Helper function to parse date string into DateTime
+  DateTime? parseDate(String dateString) {
+    try {
+      return DateTime.parse(dateString);
+    } catch (e) {
+      print("Error parsing date: $e");
+      return null;
+    }
+  }
+
+  // Helper function to parse cycle length range into an integer
+  int parseCycleLength(String cycleLengthRange) {
+    try {
+      final parts = cycleLengthRange.split('-');
+      final lowerBound = int.parse(parts.first.trim());
+      return lowerBound;
+    } catch (e) {
+      print("Error parsing cycle length range: $e");
+      return 28; // Default to a common average cycle length
+    }
+  }
+
+// Additional AuthService methods (e.g., login, signup) would go here...
 }
+// Additional methods can go here...

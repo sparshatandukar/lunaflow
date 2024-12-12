@@ -114,7 +114,7 @@ class _LoginState extends State<Login> {
                         setState(() {
                           isLoading = false;
                         });
-                        Navigator.pushReplacementNamed(context, '/dashboard');
+                        Navigator.pushReplacementNamed(context, '/server');
                       }
                     }
                   },
