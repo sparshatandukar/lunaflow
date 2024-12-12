@@ -65,6 +65,7 @@ class _DashboardState extends State<Dashboard> {
                 fontWeight: FontWeight.bold,
               ),
             ),
+            const SizedBox(width: 10,),
             Text(
               UserData?['fullName'] ?? '',
               style: const TextStyle(
