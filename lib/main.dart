@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:lunaflow/page/dashboard.dart';
+// import 'package:lunaflow/page/pcosdiet.dart';
 // import 'package:lunaflow/page/blogspage.dart';
 // import 'package:lunaflow/page/cyclepage.dart';
-import 'package:lunaflow/page/dashboard.dart';
+// import 'package:lunaflow/page/dashboard.dart';
+// import 'package:lunaflow/page/pcosdiet.dart';
+// import 'package:lunaflow/page/pcosexercise.dart';
 // import 'package:lunaflow/page/loginpage.dart';
 // import 'package:lunaflow/page/privacy.dart';
 

@@ -19,7 +19,7 @@ class _BlogsPageState extends State<BlogsPage> {
           title: TabBar(
             indicator: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              color: Colors.pink.shade50,
+              color: Color(0xFFEEA09C),
             ),
             labelColor: Colors.black,
             unselectedLabelColor: Colors.grey,
@@ -42,8 +42,8 @@ class _BlogsPageState extends State<BlogsPage> {
         body: TabBarView(
           children: [
             DietContent(),
-            Center(child: Text("Exercise Content")),
-            Center(child: Text("Life-style Content")),
+            ExerciseContent(),
+            LifestyleContent(),
           ],
         ),
       ),
@@ -56,20 +56,78 @@ class DietContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.symmetric(vertical: 25.0, horizontal: 16.0),
         child: Column(
           children: const [
+            SizedBox(height: 16),
             FoodCard(
               imageUrl: 'assets/dietspinach.jpg',
               username: 'Samira',
               description: 'Good diet',
             ),
-            SizedBox(height: 16),
+            SizedBox(height: 32),
             FoodCard(
               imageUrl: 'assets/dietdarkchoco.jpg',
               username: 'Samira',
               description: 'Good diet',
             ),
+            SizedBox(height: 16),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class ExerciseContent extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 25.0, horizontal: 16.0),
+        child: Column(
+          children: const [
+            SizedBox(height: 16),
+            FoodCard(
+              imageUrl: 'assets/pelvictilt.png',
+              username: 'Samira',
+              description: 'Good diet',
+            ),
+            SizedBox(height: 32),
+            FoodCard(
+              imageUrl: 'assets/kneetochest.jpg',
+              username: 'Samira',
+              description: 'Good diet',
+            ),
+            SizedBox(height: 16),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class LifestyleContent extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 25.0, horizontal: 16.0),
+        child: Column(
+          children: const [
+            SizedBox(height: 16),
+            FoodCard(
+              imageUrl: 'assets/dietspinach.jpg',
+              username: 'Samira',
+              description: 'Good diet',
+            ),
+            SizedBox(height: 32),
+            FoodCard(
+              imageUrl: 'assets/dietdarkchoco.jpg',
+              username: 'Samira',
+              description: 'Good diet',
+            ),
+            SizedBox(height: 16),
           ],
         ),
       ),
@@ -110,9 +168,9 @@ class FoodCard extends StatelessWidget {
             padding: const EdgeInsets.all(16.0),
             child: Row(
               children: [
-                Icon(Icons.favorite_border, color: Colors.pink),
+                Icon(Icons.favorite_border, color: Color(0xFFEEA09C)),
                 SizedBox(width: 8),
-                Icon(Icons.chat_bubble_outline, color: Colors.pink),
+                Icon(Icons.chat_bubble_outline, color: Color(0xFFEEA09C)),
                 Spacer(),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
