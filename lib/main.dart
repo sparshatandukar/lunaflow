@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:lunaflow/blogs/PCOS/About.dart';
+import 'package:lunaflow/blogs/PCOS/Causes.dart';
+import 'package:lunaflow/blogs/PCOS/PCOSBlogsPage.dart';
+import 'package:lunaflow/blogs/PCOS/Treatment.dart';
 import 'package:lunaflow/blogs/blogspage.dart';
 import 'package:lunaflow/landing%20page/navigate.dart';
 import 'package:lunaflow/landing%20page/welcomepage.dart';
@@ -39,7 +43,9 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const Blogpage(),
+      home: const About(
+
+      ),
     );
   }
 }
