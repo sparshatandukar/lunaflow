@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 class CommunityPage extends StatefulWidget {
@@ -14,26 +16,73 @@ class _CommunityPageState extends State<CommunityPage> {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.pink.shade50,
+          backgroundColor: const Color.fromARGB(255, 248, 248, 248),
           elevation: 0,
           centerTitle: true,
-          title: Text(
-            'PCOS Blogs',
-            style: TextStyle(color: Colors.black),
+          title: Column(
+            children: [
+              SizedBox(height: 8),
+              Row(
+                children: [
+                  IconButton(
+                    icon: Icon(Icons.add, color: Color(0xFFEEA09C)),
+                    onPressed: () {},
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 36,
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          hintText: "Search...",
+                          prefixIcon:
+                              Icon(Icons.search, color: Color(0xFFEEA09C)),
+                          filled: true,
+                          fillColor: Colors.white,
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20),
+                            borderSide: BorderSide.none,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
           ),
           actions: [
             IconButton(
-              icon: Icon(Icons.person, color: Colors.pink),
+              icon: Icon(Icons.person, color: Color(0xFFEEA09C)),
               onPressed: () {},
             ),
           ],
           bottom: TabBar(
-            indicatorColor: Colors.pink,
-            labelColor: Colors.pink,
-            unselectedLabelColor: Colors.grey,
+            indicator: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: Color(0xFFEEA09C),
+            ),
+            labelColor: Colors.white,
+            unselectedLabelColor: Color(0xFFEEA09C),
             tabs: [
-              Tab(text: 'Blogs'),
-              Tab(text: 'PCOS Blogs'),
+              Tab(
+                child: Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Color(0xFFEEA09C)),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Center(child: Text('Blogs')),
+                ),
+              ),
+              Tab(
+                child: Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Color(0xFFEEA09C)),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Center(child: Text('PCOS Blogs')),
+                ),
+              ),
             ],
           ),
         ),
@@ -58,62 +107,146 @@ class PCOSContent extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Center(
-              child: Text('jdjdj'),
-              // child: Image.asset(
-              //   // 'assets/images/placeholder.png', // Replace with your image path
-              //   // height: 150,
-              // ),
+              child: Image.asset(
+                'assets/pcos.jpg', // Replace with your image path
+                height: 200,
+                width: 700,
+              ),
+            ),
+            SizedBox(height: 15),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: Size(60, 80),
+                      backgroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      side: BorderSide(color: Color(0xFFEEA09C)),
+                    ),
+                    child: Column(
+                      children: [
+                        Icon(Icons.info, color: Color(0xFFEEA09C)),
+                        Text('About PCOS'),
+                      ],
+                    ),
+                  ),
+                  SizedBox(width: 15),
+                  ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: Size(60, 80),
+                      backgroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      side: BorderSide(color: Color(0xFFEEA09C)),
+                    ),
+                    child: Column(
+                      children: [
+                        Icon(Icons.list, color: Color(0xFFEEA09C)),
+                        Text('PCOS Causes'),
+                      ],
+                    ),
+                  ),
+                  SizedBox(width: 15),
+                  ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: Size(60, 80),
+                      backgroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      side: BorderSide(color: Color(0xFFEEA09C)),
+                    ),
+                    child: Column(
+                      children: [
+                        Icon(Icons.medical_services, color: Color(0xFFEEA09C)),
+                        Text('PCOS Treatment'),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 16),
+            Container(
+              padding: EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                color: Colors.pink.shade50,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Text(
+                      'You haven\'t provided any information about symptoms commonly associated with the condition yet.',
+                      style: TextStyle(color: Colors.black54),
+                    ),
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.add_circle, color: Color(0xFFEEA09C)),
+                    onPressed: () {},
+                  ),
+                ],
+              ),
             ),
             SizedBox(height: 16),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.pink.shade100, // Corrected property
+                Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Color(0xFFEEA09C)),
+                    borderRadius: BorderRadius.circular(10),
                   ),
+                  padding: EdgeInsets.all(8),
+                  width: 100,
                   child: Column(
                     children: [
-                      Icon(Icons.info, color: Colors.pink),
-                      Text('About PCOS'),
+                      Icon(Icons.local_dining,
+                          color: Color(0xFFEEA09C), size: 50),
+                      Text('Diet'),
                     ],
                   ),
                 ),
-                ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.pink.shade100, // Corrected property
+                Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Color(0xFFEEA09C)),
+                    borderRadius: BorderRadius.circular(10),
                   ),
+                  padding: EdgeInsets.all(8),
+                  width: 100,
                   child: Column(
                     children: [
-                      Icon(Icons.list, color: Colors.pink),
-                      Text('PCOS Causes'),
+                      Icon(Icons.fitness_center,
+                          color: Color(0xFFEEA09C), size: 50),
+                      Text('Exercise'),
                     ],
                   ),
                 ),
-                ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.pink.shade100, // Corrected property
+                Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Color(0xFFEEA09C)),
+                    borderRadius: BorderRadius.circular(10),
                   ),
+                  padding: EdgeInsets.all(8),
+                  width: 100,
                   child: Column(
                     children: [
-                      Icon(Icons.medical_services, color: Colors.pink),
-                      Text('PCOS Treatment'),
+                      Icon(Icons.self_improvement,
+                          color: Color(0xFFEEA09C), size: 50),
+                      Text('Lifestyle'),
                     ],
                   ),
                 ),
               ],
-            ),
-            SizedBox(height: 16),
-            Text(
-              'You haven\'t provided any information about symptoms commonly associated with the condition yet.',
-              style: TextStyle(color: Colors.black54),
-            ),
-            IconButton(
-              icon: Icon(Icons.add_circle, color: Colors.pink),
-              onPressed: () {},
             ),
             SizedBox(height: 16),
             Text(
@@ -126,20 +259,25 @@ class PCOSContent extends StatelessWidget {
             ),
             SizedBox(height: 8),
             FAQItem(
-                question: 'What is PCOS?',
-                answer: 'PCOS is a hormonal disorder...'),
+              question: 'What is PCOS?',
+              answer: 'PCOS is a hormonal disorder...',
+            ),
             FAQItem(
-                question: 'What are the common symptoms of PCOS?',
-                answer: 'Symptoms include...'),
+              question: 'What are the common symptoms of PCOS?',
+              answer: 'Symptoms include...',
+            ),
             FAQItem(
-                question: 'Can PCOS be cured?',
-                answer: 'There is no cure, but...'),
+              question: 'Can PCOS be cured?',
+              answer: 'There is no cure, but...',
+            ),
             FAQItem(
-                question: 'How does PCOS affect fertility?',
-                answer: 'PCOS can...'),
+              question: 'How does PCOS affect fertility?',
+              answer: 'PCOS can...',
+            ),
             FAQItem(
-                question: 'Can PCOS affect mental health?',
-                answer: 'Yes, it can...'),
+              question: 'Can PCOS affect mental health?',
+              answer: 'Yes, it can...',
+            ),
           ],
         ),
       ),
