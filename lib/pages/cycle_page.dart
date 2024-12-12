@@ -112,7 +112,7 @@ class _CyclePageState extends State<CyclePage> {
             },
           ),
           const SizedBox(height: 16),
-          if (selectedDate == null)
+
             Row(
               children: [
                 const Text(
@@ -134,6 +134,7 @@ class _CyclePageState extends State<CyclePage> {
                 ),
               ],
             ),
+          const SizedBox(height: 15,),
           if (selectedDate != null)
             Text(
               "Selected Date: ${DateFormat('dd MMM yyyy').format(selectedDate!)}",
