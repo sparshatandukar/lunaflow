@@ -23,6 +23,13 @@ class _CyclePageState extends State<CyclePage> {
           'Period Tracker',
           style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
         ),
+        actions: [
+          ElevatedButton(
+            onPressed: () {},
+            child: Icon(Icons.done),
+            style: ElevatedButton.styleFrom(),
+          )
+        ],
         centerTitle: true,
       ),
       body: SingleChildScrollView(
