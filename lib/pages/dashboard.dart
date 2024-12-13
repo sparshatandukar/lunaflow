@@ -15,6 +15,7 @@ class Dashboard extends StatefulWidget {
 class _DashboardState extends State<Dashboard> {
   bool isLoader = true;
   Map<String, dynamic>? UserData;
+  List<Map<String, dynamic>>? questionnaires;
   String _base64Image = "";
   bool isLoading = false;
   DateTime nextPeriod = DateTime.now();
@@ -32,15 +33,16 @@ class _DashboardState extends State<Dashboard> {
         isLoader = true;
       });
       final user = Provider.of<UserModel?>(context, listen: false);
-
-      final data = await AuthService().getCurrentUser(context, user!.uid);
+      final questionData = await AuthService().getQuestionnaire(context, user!.uid);
+      final data = await AuthService().getCurrentUser(context, user.uid);
       final nextPeriodDate = await AuthService().getNextPeriodDate(user.uid);
-
       setState(() {
         UserData = data.isNotEmpty ? data[0]['user'] : null;
         isLoader = false;
+        questionnaires=questionData;
         nextPeriod = nextPeriodDate ?? DateTime.now();
       });
+      print(questionData?[0]['selectedCycleLength']);
     } catch (e) {
       setState(() {
         isLoader = false;
@@ -204,14 +206,14 @@ class _DashboardState extends State<Dashboard> {
                         ),
                       ),
                       const SizedBox(height: 8),
-                      const Card(
-                          margin: EdgeInsets.symmetric(vertical: 8.0),
+                       Card(
+                          margin: const EdgeInsets.symmetric(vertical: 8.0),
                           child: ListTile(
-                            title: Text('Previous cycle length',
+                            title: const Text('Previous Period',
                                 style: TextStyle(fontWeight: FontWeight.bold)),
-                            subtitle: Text('26 days',
-                                style: TextStyle(fontSize: 16.0)),
-                            trailing: Row(
+                            subtitle: Text(questionnaires?[0]['selectedCycleLength'],
+                                style: const TextStyle(fontSize: 16.0)),
+                            trailing: const Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 Text(
@@ -226,14 +228,14 @@ class _DashboardState extends State<Dashboard> {
                               ],
                             ),
                           )),
-                      const Card(
-                          margin: EdgeInsets.symmetric(vertical: 8.0),
+                       Card(
+                          margin: const EdgeInsets.symmetric(vertical: 8.0),
                           child: ListTile(
-                            title: Text('Previous period length',
+                            title: const Text('Previous period length',
                                 style: TextStyle(fontWeight: FontWeight.bold)),
-                            subtitle: Text('5 days',
-                                style: TextStyle(fontSize: 16.0)),
-                            trailing: Row(
+                            subtitle: Text(questionnaires?[0]['selectedCycleLength'],
+                                style: const TextStyle(fontSize: 16.0)),
+                            trailing: const Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 Text(
@@ -248,14 +250,14 @@ class _DashboardState extends State<Dashboard> {
                               ],
                             ),
                           )),
-                      const Card(
-                          margin: EdgeInsets.symmetric(vertical: 8.0),
+                       Card(
+                          margin: const EdgeInsets.symmetric(vertical: 8.0),
                           child: ListTile(
-                            title: Text('Cycle length variation',
+                            title: const Text('Cycle length variation',
                                 style: TextStyle(fontWeight: FontWeight.bold)),
-                            subtitle: Text('26-33 days',
-                                style: TextStyle(fontSize: 16.0)),
-                            trailing: Row(
+                            subtitle: Text(questionnaires?[0]['selectedDuration'],
+                                style: const TextStyle(fontSize: 16.0)),
+                            trailing: const Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 Text(
