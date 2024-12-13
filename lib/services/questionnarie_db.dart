@@ -48,7 +48,7 @@ class QuestionnarieDb {
         'selectedDuration': selectedDuration,
         'selectedCycleLength': selectedCycle,
         'irregularPeriods': irregularPeriods,
-        'diagnosedConditions': diagnosedConditions,
+        'diagnosedCondibtions': diagnosedConditions,
         'severeSymptoms': severeSymptoms,
         'trackMoodOrSymptoms': trackMoodOrSymptoms,
         'selectedGoals': selectedGoals,

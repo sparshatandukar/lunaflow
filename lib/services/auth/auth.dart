@@ -154,10 +154,29 @@ class AuthService {
       throw Exception("Failed to fetch user data: $e");
     }
   }
-  Future<DateTime?> getNextPeriodDate(String userId) async {
+  Future getQuestionnaire(
+      BuildContext context, String uid, ) async {
     try {
       // Fetch user document from Firestore
       final userDoc = await FirebaseFirestore.instance.collection('period_logs')
+          .where('userId', isEqualTo: uid)
+          .get();
+      final data =  userDoc.docs.first.data as Map<String, dynamic>;
+      return [
+        {
+          'questions': {...data, 'id': data['id']},
+        }
+      ];
+
+    } catch (e) {
+      print("Error: $e");
+      return null;
+    }
+  }
+  Future<DateTime?> getNextPeriodDate(String userId) async {
+    try {
+      // Fetch user document from Firestore
+      final userDoc = await FirebaseFirestore.instance.collection('questions')
           .where('userId', isEqualTo: userId)
           .get();
 
