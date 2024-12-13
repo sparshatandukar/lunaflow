@@ -94,11 +94,7 @@ class AuthService {
         email: email,
         password: password,
       );
-      _showSnackBar(
-        context,
-        "lOGIN SUCCESSFUL",
-        Colors.green,
-      );
+
       User? user = result.user;
       if (user == null) {
         _showSnackBar(
@@ -178,6 +174,38 @@ class AuthService {
     }
   }
 
+
+  Future<List<Map<String, dynamic>>> getBlogs() async {
+   try{ final QuerySnapshot vegSnapshot = await FirebaseFirestore.instance
+        .collection('blogs')
+        .get();
+
+    final userIds = vegSnapshot.docs
+        .map((doc) => doc['userId'] as String)
+        .toSet();
+
+    final QuerySnapshot userSnapshot = await FirebaseFirestore.instance
+        .collection('users')
+        .where(FieldPath.documentId, whereIn: userIds.toList())
+        .get();
+
+    final userMap = {
+      for (var doc in userSnapshot.docs) doc.id: doc.data() as Map<String, dynamic>
+    };
+
+    return vegSnapshot.docs.map((vegDoc) {
+      final blogData = vegDoc.data() as Map<String, dynamic>;
+      final userId = blogData['userId'];
+      final userData = userMap[userId];
+      return {
+        'blog': {...blogData, 'id': vegDoc.id},
+        'user': userData,
+      };
+    }).toList();
+    } catch (e) {
+      throw Exception("Failed to fetch blogs with user data: $e");
+    }
+  }
   Future<DateTime?> getNextPeriodDate(String userId) async {
     try {
       // Fetch user document from Firestore

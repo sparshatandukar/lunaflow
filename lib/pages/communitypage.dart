@@ -1,7 +1,8 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:lunaflow/page/blogspage.dart';
+
+import 'blogspage.dart';
 
 class CommunityPage extends StatefulWidget {
   const CommunityPage({super.key});
@@ -11,23 +12,26 @@ class CommunityPage extends StatefulWidget {
 }
 
 class _CommunityPageState extends State<CommunityPage> {
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 2,
-      child: Scaffold(
+      child:  Scaffold(
         appBar: AppBar(
           backgroundColor: const Color.fromARGB(255, 248, 248, 248),
           elevation: 0,
           centerTitle: true,
           title: Column(
             children: [
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               Row(
                 children: [
                   IconButton(
-                    icon: Icon(Icons.add, color: Color(0xFFEEA09C)),
-                    onPressed: () {},
+                    icon: const Icon(Icons.add, color: Color(0xFFEEA09C)),
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/add_blog');
+                    },
                   ),
                   Expanded(
                     child: Container(
@@ -50,24 +54,24 @@ class _CommunityPageState extends State<CommunityPage> {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               )
             ],
           ),
           actions: [
             IconButton(
-              icon: Icon(Icons.person, color: Color(0xFFEEA09C)),
+              icon: const Icon(Icons.person, color: Color(0xFFEEA09C)),
               onPressed: () {},
             ),
           ],
           bottom: TabBar(
             indicator: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
-              color: Color(0xFFEEA09C),
+              color: const Color(0xFFEEA09C),
             ),
             labelColor: Colors.white,
-            unselectedLabelColor: Color(0xFFEEA09C),
+            unselectedLabelColor: const Color(0xFFEEA09C),
             tabs: [
               Tab(
                 child: Container(
@@ -92,7 +96,7 @@ class _CommunityPageState extends State<CommunityPage> {
         ),
         body: TabBarView(
           children: [
-            BlogsPage(), // Placeholder
+            const BlogsPage(), // Placeholder
             PCOSContent(),
           ],
         ),
@@ -112,7 +116,7 @@ class PCOSContent extends StatelessWidget {
           children: [
             Center(
               child: Image.asset(
-                'assets/pcos.jpg', // Replace with your image path
+                'image/pcos.jpg', // Replace with your image path
                 height: 200,
                 width: 700,
               ),

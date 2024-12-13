@@ -13,11 +13,10 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
-  bool isLoader = true;
+  bool isLoader = false;
   Map<String, dynamic>? UserData;
   List<Map<String, dynamic>>? questionnaires;
   String _base64Image = "";
-  bool isLoading = false;
   DateTime nextPeriod = DateTime.now();
 // Initialized with default value
 
@@ -211,7 +210,7 @@ class _DashboardState extends State<Dashboard> {
                           child: ListTile(
                             title: const Text('Previous Period',
                                 style: TextStyle(fontWeight: FontWeight.bold)),
-                            subtitle: Text(questionnaires?[0]['selectedCycleLength'],
+                            subtitle: Text(questionnaires?[0]['selectedCycleLength']??"",
                                 style: const TextStyle(fontSize: 16.0)),
                             trailing: const Row(
                               mainAxisSize: MainAxisSize.min,
@@ -233,7 +232,7 @@ class _DashboardState extends State<Dashboard> {
                           child: ListTile(
                             title: const Text('Previous period length',
                                 style: TextStyle(fontWeight: FontWeight.bold)),
-                            subtitle: Text(questionnaires?[0]['selectedCycleLength'],
+                            subtitle: Text(questionnaires?[0]['selectedCycleLength']??"",
                                 style: const TextStyle(fontSize: 16.0)),
                             trailing: const Row(
                               mainAxisSize: MainAxisSize.min,
@@ -255,7 +254,7 @@ class _DashboardState extends State<Dashboard> {
                           child: ListTile(
                             title: const Text('Cycle length variation',
                                 style: TextStyle(fontWeight: FontWeight.bold)),
-                            subtitle: Text(questionnaires?[0]['selectedDuration'],
+                            subtitle: Text(questionnaires?[0]['selectedDuration']??'',
                                 style: const TextStyle(fontSize: 16.0)),
                             trailing: const Row(
                               mainAxisSize: MainAxisSize.min,

@@ -19,7 +19,9 @@ class _LoginState extends State<Login> {
   final AuthService _auth = AuthService();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return isLoading
+        ? const Center(child: CircularProgressIndicator())
+        : Scaffold(
       backgroundColor: const Color(0xFFFDF8F6), // Light beige background color
       body: Form(
         key: _formKey,
@@ -114,6 +116,11 @@ class _LoginState extends State<Login> {
                         setState(() {
                           isLoading = false;
                         });
+                        const SnackBar(
+                          content: Text('login successful'),
+                          duration: Duration(seconds: 3),
+                          backgroundColor: Colors.green,
+                        );
                         Navigator.pushReplacementNamed(context, '/server');
                       }
                     }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:lunaflow/page/pcoslifestyle.dart';
-import 'pcosexercise.dart';
+import 'package:lunaflow/pages/pcosexercise.dart';
+import 'package:lunaflow/pages/pcoslifestyle.dart';
+
 
 class Pcosdiet extends StatelessWidget {
   const Pcosdiet({super.key});

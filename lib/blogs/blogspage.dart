@@ -10,7 +10,7 @@ class Blogpage extends StatefulWidget {
 class _BlogpageState extends State<Blogpage> {
   int _selectedIndex = 0;
   final TextEditingController _searchController = TextEditingController();
-
+  List<Map<String, dynamic>> categoriesData = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
