@@ -17,7 +17,8 @@ class _DashboardState extends State<Dashboard> {
   Map<String, dynamic>? UserData;
   String _base64Image = "";
   bool isLoading = false;
-  DateTime nextPeriod = DateTime.now(); // Initialized with default value
+  DateTime nextPeriod = DateTime.now();
+// Initialized with default value
 
   @override
   void initState() {
@@ -52,119 +53,141 @@ class _DashboardState extends State<Dashboard> {
     return isLoader
         ? const Center(child: CircularProgressIndicator())
         : Scaffold(
-      backgroundColor: const Color(0xFFFDF8F6),
-      appBar: AppBar(
-        backgroundColor: const Color(0xFFFDF8F6),
-        elevation: 0,
-        title: Row(
-          children: [
-            const Text(
-               'Welcome',
-              style: TextStyle(
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
+            backgroundColor: const Color(0xFFFDF8F6),
+            appBar: AppBar(
+              backgroundColor: const Color(0xFFFDF8F6),
+              elevation: 0,
+              title: Row(
+                children: [
+                  const Text(
+                    'Welcome',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Text(
+                    UserData?['fullName'] ?? '',
+                    style: const TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  )
+                ],
               ),
             ),
-            const SizedBox(width: 10,),
-            Text(
-              UserData?['fullName'] ?? '',
-              style: const TextStyle(
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
-              ),
-            )
-          ],
-        ),
-      ),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                    color: const Color(0xFFEEA09C),
-                    borderRadius: BorderRadius.circular(16),
-                  ),
+            body: SafeArea(
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
                   child: Column(
-                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.all(16.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      Container(
+                        decoration: BoxDecoration(
+                          color: const Color(0xFFEEA09C),
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
                           children: [
-                            for (var day in ['S', 'M', 'T', 'W', 'T', 'F', 'S'])
-                              Column(
+                            Padding(
+                              padding: const EdgeInsets.all(16.0),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(day),
-                                  const SizedBox(height: 8),
-                                  Container(
-                                    width: 24,
-                                    height: 24,
-                                    decoration: BoxDecoration(
-                                      color: day == 'T' ? Colors.white : null,
-                                      borderRadius: BorderRadius.circular(12),
-                                    ),
-                                    child: Center(
-                                      child: Text(
-                                        '15',
-                                        style: TextStyle(
-                                          color: day == 'T' ? Colors.black : null,
-                                          fontWeight: FontWeight.bold,
+                                  for (var day in [
+                                    'S',
+                                    'M',
+                                    'T',
+                                    'W',
+                                    'T',
+                                    'F',
+                                    'S'
+                                  ])
+                                    Column(
+                                      children: [
+                                        Text(day),
+                                        const SizedBox(height: 8),
+                                        Container(
+                                          width: 24,
+                                          height: 24,
+                                          decoration: BoxDecoration(
+                                            color: day == 'T'
+                                                ? Colors.white
+                                                : null,
+                                            borderRadius:
+                                                BorderRadius.circular(12),
+                                          ),
+                                          child: Center(
+                                            child: Text(
+                                              '15',
+                                              style: TextStyle(
+                                                color: day == 'T'
+                                                    ? Colors.black
+                                                    : null,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                          ),
                                         ),
-                                      ),
+                                      ],
                                     ),
-                                  ),
                                 ],
                               ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 24.0),
-                        child: Column(
-                          children: [
-                            Container(
-                              width: 250,
-                              height: 250,
-                              decoration: const BoxDecoration(
-                                color: Colors.white,
-                                shape: BoxShape.circle,
-                              ),
+                            ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(vertical: 24.0),
                               child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  const Text(
-                                    'Period in',
-                                    style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold,
+                                  Container(
+                                    width: 250,
+                                    height: 250,
+                                    decoration: const BoxDecoration(
+                                      color: Colors.white,
+                                      shape: BoxShape.circle,
                                     ),
-                                  ),
-                                  const SizedBox(height: 8),
-                                  Text(
-                                    DateFormat('dd MMM yyyy').format(nextPeriod),
-                                    style: const TextStyle(
-                                      fontSize: 36,
-                                      fontWeight: FontWeight.bold,
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        const Text(
+                                          'Period in',
+                                          style: TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                        const SizedBox(height: 8),
+                                        Text(
+                                          DateFormat('dd MMM yyyy')
+                                              .format(nextPeriod),
+                                          style: const TextStyle(
+                                            fontSize: 36,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                        const SizedBox(height: 16),
+                                        ElevatedButton(
+                                          onPressed: () {
+                                            Navigator.pushReplacementNamed(
+                                                context, '/cycle');
+                                          },
+                                          style: ElevatedButton.styleFrom(
+                                            backgroundColor:
+                                                const Color(0xFFEEA09C),
+                                            foregroundColor: Colors.white,
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                            ),
+                                          ),
+                                          child: const Text('Edit'),
+                                        ),
+                                      ],
                                     ),
-                                  ),
-                                  const SizedBox(height: 16),
-                                  ElevatedButton(
-                                    onPressed: () {
-                                      Navigator.pushReplacementNamed(context, '/cycle');
-                                    },
-                                    style: ElevatedButton.styleFrom(
-                                      backgroundColor: const Color(0xFFEEA09C),
-                                      foregroundColor: Colors.white,
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(8),
-                                      ),
-                                    ),
-                                    child: const Text('Edit'),
                                   ),
                                 ],
                               ),
@@ -172,46 +195,102 @@ class _DashboardState extends State<Dashboard> {
                           ],
                         ),
                       ),
+                      const SizedBox(height: 16),
+                      const Text(
+                        'My Cycle',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      const Card(
+                          margin: EdgeInsets.symmetric(vertical: 8.0),
+                          child: ListTile(
+                            title: Text('Previous cycle length',
+                                style: TextStyle(fontWeight: FontWeight.bold)),
+                            subtitle: Text('26 days',
+                                style: TextStyle(fontSize: 16.0)),
+                            trailing: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text(
+                                  'NORMAL',
+                                  style: TextStyle(
+                                    color: Colors.green,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                SizedBox(width: 8.0),
+                                Icon(Icons.info_outline, color: Colors.grey),
+                              ],
+                            ),
+                          )),
+                      const Card(
+                          margin: EdgeInsets.symmetric(vertical: 8.0),
+                          child: ListTile(
+                            title: Text('Previous period length',
+                                style: TextStyle(fontWeight: FontWeight.bold)),
+                            subtitle: Text('5 days',
+                                style: TextStyle(fontSize: 16.0)),
+                            trailing: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text(
+                                  'NORMAL',
+                                  style: TextStyle(
+                                    color: Colors.green,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                SizedBox(width: 8.0),
+                                Icon(Icons.info_outline, color: Colors.grey),
+                              ],
+                            ),
+                          )),
+                      const Card(
+                          margin: EdgeInsets.symmetric(vertical: 8.0),
+                          child: ListTile(
+                            title: Text('Cycle length variation',
+                                style: TextStyle(fontWeight: FontWeight.bold)),
+                            subtitle: Text('26-33 days',
+                                style: TextStyle(fontSize: 16.0)),
+                            trailing: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text(
+                                  'NORMAL',
+                                  style: TextStyle(
+                                    color: Colors.green,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                SizedBox(width: 8.0),
+                                Icon(Icons.info_outline, color: Colors.grey),
+                              ],
+                            ),
+                          )),
+                      const SizedBox(height: 16),
+                      const Text(
+                        'Symptoms',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      Container(
+                        height: 100,
+                        decoration: BoxDecoration(
+                          color: Colors.grey[300],
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
                     ],
                   ),
                 ),
-                const SizedBox(height: 16),
-                const Text(
-                  'My Cycle',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const SizedBox(height: 8),
-                Container(
-                  height: 100,
-                  decoration: BoxDecoration(
-                    color: Colors.grey[300],
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                ),
-                const SizedBox(height: 16),
-                const Text(
-                  'Symptoms',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const SizedBox(height: 8),
-                Container(
-                  height: 100,
-                  decoration: BoxDecoration(
-                    color: Colors.grey[300],
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                ),
-              ],
+              ),
             ),
-          ),
-        ),
-      ),
-    );
+          );
   }
 }
