@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:lunaflow/page/blogspage.dart';
 
 class CommunityPage extends StatefulWidget {
   const CommunityPage({super.key});
@@ -36,7 +37,7 @@ class _CommunityPageState extends State<CommunityPage> {
                         decoration: InputDecoration(
                           hintText: "Search...",
                           prefixIcon:
-                              Icon(Icons.search, color: Color(0xFFEEA09C)),
+                          Icon(Icons.search, color: Color(0xFFEEA09C)),
                           filled: true,
                           fillColor: Colors.white,
                           border: OutlineInputBorder(
@@ -49,6 +50,9 @@ class _CommunityPageState extends State<CommunityPage> {
                   ),
                 ],
               ),
+              SizedBox(
+                height: 20,
+              )
             ],
           ),
           actions: [
@@ -88,7 +92,7 @@ class _CommunityPageState extends State<CommunityPage> {
         ),
         body: TabBarView(
           children: [
-            Center(child: Text('Blogs Content')), // Placeholder
+            BlogsPage(), // Placeholder
             PCOSContent(),
           ],
         ),
