@@ -24,11 +24,7 @@ class _BlogsPageState extends State<BlogsPage> {
             labelColor: Colors.black,
             unselectedLabelColor: Colors.grey,
             tabs: const [
-              Padding(
-                padding:
-                    EdgeInsets.only(bottom: 30, left: 30, right: 30, top: 30),
-                child: Tab(text: "Diet"),
-              ),
+              SizedBox(width: 300, child: Tab(text: "Diet")),
               SizedBox(width: 300, child: Tab(text: "Exercise")),
               SizedBox(
                 width: 300,
@@ -145,6 +141,8 @@ class FoodCard extends StatelessWidget {
     required this.username,
     required this.description,
   });
+
+
 
   @override
   Widget build(BuildContext context) {

@@ -29,7 +29,8 @@ class Pcosdiet extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const Pcoslifestyle()),
+                      MaterialPageRoute(
+                          builder: (context) => const Pcoslifestyle()),
                     );
                   },
                   child: const Text('Lifestyle'),
@@ -39,7 +40,8 @@ class Pcosdiet extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const Pcosexercise()),
+                      MaterialPageRoute(
+                          builder: (context) => const Pcosexercise()),
                     );
                   },
                   child: const Text('Exercise'),
@@ -51,19 +53,29 @@ class Pcosdiet extends StatelessWidget {
           Expanded(
             child: SingleChildScrollView(
               child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 25.0, horizontal: 16.0),
+                padding: const EdgeInsets.symmetric(
+                    vertical: 25.0, horizontal: 16.0),
                 child: Column(
                   children: const [
                     FoodCard(
                       imageUrl: 'assets/dietspinach.jpg',
                       username: 'Samira',
-                      description: 'Leafy greens like spinach are excellent for PCOS.',
+                      description:
+                          'Leafy greens like spinach are excellent for PCOS.',
                     ),
                     SizedBox(height: 32),
                     FoodCard(
                       imageUrl: 'assets/dietdarkchoco.jpg',
                       username: 'Samira',
-                      description: 'Dark chocolate is a healthy treat rich in magnesium.',
+                      description:
+                          'Dark chocolate is a healthy treat rich in magnesium.',
+                    ),
+                    SizedBox(height: 32),
+                    FoodCard(
+                      imageUrl: 'assets/dietdarkchoco.jpg',
+                      username: 'Samira',
+                      description:
+                          'Dark chocolate is a healthy treat rich in magnesium.',
                     ),
                   ],
                 ),

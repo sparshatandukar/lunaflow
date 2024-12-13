@@ -37,7 +37,7 @@ class _PcosexerciseState extends State<Pcosexercise> {
               ),
               SizedBox(height: 16),
               FoodCard(
-                imageUrl: 'assets/pelvictilt.jpg',
+                imageUrl: 'assets/kneetochest.jpg',
                 username: 'Samira',
                 description: 'Effective exercise for stress management.',
               ),
@@ -52,7 +52,22 @@ class _PcosexerciseState extends State<Pcosexercise> {
               ),
               SizedBox(height: 16),
               FoodCard(
-                imageUrl: 'assets/yogapose.jpg',
+                imageUrl: 'assets/kneetochest.jpg',
+                username: 'Samira',
+                description: 'Focus on relaxation and hormone regulation.',
+              ),
+              SizedBox(height: 32),
+              Text(
+                'Yoga and Mindfulness',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(height: 16),
+              FoodCard(
+                imageUrl: 'assets/kneetochest.jpg',
                 username: 'Samira',
                 description: 'Focus on relaxation and hormone regulation.',
               ),

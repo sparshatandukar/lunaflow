@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lunaflow/page/dashboard.dart';
+// import 'package:lunaflow/page/dashboard.dart';
+import 'package:lunaflow/page/pcosdiet.dart';
 // import 'package:lunaflow/page/pcosdiet.dart';
 // import 'package:lunaflow/page/blogspage.dart';
 // import 'package:lunaflow/page/cyclepage.dart';
@@ -25,6 +26,6 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: const Dashboard());
+        home: const Pcosdiet());
   }
 }

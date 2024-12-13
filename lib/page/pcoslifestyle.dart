@@ -32,7 +32,7 @@ class _PcoslifestyleState extends State<Pcoslifestyle> {
             ),
             SizedBox(height: 32),
             FoodCard(
-              imageUrl: 'assets/lifestyle1.jpg',
+              imageUrl: 'assets/dietspinach.jpg',
               username: 'Samira',
               description: 'Stress management through yoga and meditation.',
             ),
@@ -44,7 +44,7 @@ class _PcoslifestyleState extends State<Pcoslifestyle> {
             ),
             SizedBox(height: 32),
             FoodCard(
-              imageUrl: 'assets/lifestyle1.jpg',
+              imageUrl: 'assets/dietspinach.jpg',
               username: 'Samira',
               description: 'Stress management through yoga and meditation.',
             ),

@@ -50,6 +50,9 @@ class _CommunityPageState extends State<CommunityPage> {
                   ),
                 ],
               ),
+              SizedBox(
+                height: 20,
+              )
             ],
           ),
           actions: [
@@ -214,7 +217,6 @@ class PCOSContent extends StatelessWidget {
                       Icon(Icons.local_dining,
                           color: Color(0xFFEEA09C), size: 50),
                       Text('Diet'),
-                    
                     ],
                   ),
                 ),
