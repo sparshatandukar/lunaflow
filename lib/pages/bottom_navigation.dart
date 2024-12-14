@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lunaflow/pages/communitypage.dart';
 import 'package:lunaflow/pages/cycle_page.dart';
 import 'package:lunaflow/pages/dashboard.dart';
+import 'package:lunaflow/pages/view_profile.dart';
 import 'package:lunaflow/services/user_model.dart';
 import 'package:provider/provider.dart';
 
@@ -30,7 +31,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
       const CyclePage(),
       const CyclePage(),
       const CommunityPage(),
-      const CyclePage()
+      const ViewProfile()
     ];
 
     return Scaffold(
