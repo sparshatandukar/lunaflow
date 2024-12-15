@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 
 import '../services/auth/auth.dart';
 
-
 // BlogsPage Implementation
 class BlogsPage extends StatefulWidget {
   const BlogsPage({super.key});
@@ -30,7 +29,6 @@ class _BlogsPageState extends State<BlogsPage> {
         _blogs = blogs;
         _isLoading = false;
       });
-      print(blogs);
     } catch (e) {
       setState(() {
         _isLoading = false;
@@ -57,14 +55,14 @@ class _BlogsPageState extends State<BlogsPage> {
             labelColor: Colors.black,
             unselectedLabelColor: Colors.grey,
             tabs: const [
-    SizedBox(width: 300, child: Tab(text: "Diet")),
-    SizedBox(width: 300, child: Tab(text: "Exercise")),
-    SizedBox(
-    width: 300,
-    child: Tab(
-    text: "Life-style",
-    ),
-    ),
+              SizedBox(width: 300, child: Tab(text: "Diet")),
+              SizedBox(width: 300, child: Tab(text: "Exercise")),
+              SizedBox(
+                width: 300,
+                child: Tab(
+                  text: "Life-style",
+                ),
+              ),
             ],
           ),
         ),
@@ -88,16 +86,30 @@ class BlogCategoryContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 25.0, horizontal: 16.0),
-        child: ListView.builder(
-          shrinkWrap: true, // Allows the ListView to take up only the required space
-          physics: const NeverScrollableScrollPhysics(), // Disable scrolling for the parent ScrollView
-          itemCount: blogs.length,
-          itemBuilder: (context, index) {
-            return FoodCard(blog: blogs[index]);
-          },
+        child: Column(
+          children: [
+            SizedBox(
+              height: screenHeight * 0.7, // Limit the height of the list
+              child: ListView.builder(
+                itemCount: blogs.length,
+                itemBuilder: (context, index) {
+                  return Column(
+                    children: [
+                      FoodCard(blog: blogs[index], screenWidth: screenWidth),
+                      if (index != blogs.length - 1)
+                        const SizedBox(height: 16), // Add spacing between cards
+                    ],
+                  );
+                },
+              ),
+            ),
+          ],
         ),
       ),
     );
@@ -107,8 +119,9 @@ class BlogCategoryContent extends StatelessWidget {
 // FoodCard Widget
 class FoodCard extends StatelessWidget {
   final Map<String, dynamic> blog;
+  final double screenWidth;
 
-  const FoodCard({super.key, required this.blog});
+  const FoodCard({super.key, required this.blog, required this.screenWidth});
 
   @override
   Widget build(BuildContext context) {
@@ -132,30 +145,46 @@ class FoodCard extends StatelessWidget {
           ClipRRect(
             borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
             child: imageBytes != null
-                ? Image.memory(imageBytes, fit: BoxFit.cover)
-                : Image.asset('image/pcos.jpg', fit: BoxFit.cover),
+                ? Image.memory(
+              imageBytes,
+              fit: BoxFit.cover,
+              width: double.infinity,
+              height: screenWidth * 0.5,
+            )
+                : Image.asset(
+              'image/pcos.jpg',
+              fit: BoxFit.cover,
+              width: double.infinity,
+              height: screenWidth * 0.5,
+            ),
           ),
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Icon(Icons.favorite_border, color: Color(0xFFEEA09C)),
                 const SizedBox(width: 8),
                 const Icon(Icons.chat_bubble_outline, color: Color(0xFFEEA09C)),
-                const Spacer(),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Text(
-                      blog['user']['email'],
-                      style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-                    ),
-                    const SizedBox(height: 4),
-                    Text(
-                      blog['blog']['desc'],
-                      style: const TextStyle(color: Colors.grey),
-                    ),
-                  ],
+                const SizedBox(width: 8),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        blog['user']['email'],
+                        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        blog['blog']['desc'],
+                        style: const TextStyle(color: Colors.grey),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
