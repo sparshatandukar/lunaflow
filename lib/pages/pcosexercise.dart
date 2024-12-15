@@ -28,7 +28,7 @@ class _PcosexerciseState extends State<Pcosexercise> {
             children: const [
               SizedBox(height: 16),
               Text(
-                'Cardiovascular Exercises',
+                'The Cobra Pose',
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
@@ -37,13 +37,13 @@ class _PcosexerciseState extends State<Pcosexercise> {
               ),
               SizedBox(height: 16),
               FoodCard(
-                imageUrl: 'assets/kneetochest.jpg',
-                username: 'Samira',
-                description: 'Effective exercise for stress management.',
+                imageUrl: 'image/pcos_exercise1.png',
+                username: 'Alupage',
+                description: 'The Cobra Pose (Bhujangasana) is a gentle backbend yoga pose where you lie face down, place your palms under your shoulders, and lift your chest while keeping your lower body grounded. It is highly beneficial for women with PCOS (Polycystic Ovary Syndrome) as it promotes hormonal balance, stimulates the reproductive organs, and reduces stress.',
               ),
               SizedBox(height: 32),
               Text(
-                'Yoga and Mindfulness',
+                'The Butterfly Pose',
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
@@ -52,13 +52,13 @@ class _PcosexerciseState extends State<Pcosexercise> {
               ),
               SizedBox(height: 16),
               FoodCard(
-                imageUrl: 'assets/kneetochest.jpg',
-                username: 'Samira',
-                description: 'Focus on relaxation and hormone regulation.',
+                imageUrl: 'image/pcos_exercise2.png',
+                username: 'Alupage',
+                description: 'The Butterfly Pose (Baddha Konasana) is excellent for PCOS as it stimulates the reproductive organs, improves blood circulation in the pelvic region, and promotes hormonal balance. How to Do: Sit on the floor with your back straight. Bring the soles of your feet together, letting your knees fall outward. Hold your feet with your hands and gently flap your knees up and down like butterfly wings. Breathe deeply and continue for 1–2 minutes. ',
               ),
               SizedBox(height: 32),
               Text(
-                'Yoga and Mindfulness',
+                'Planks',
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
@@ -67,9 +67,9 @@ class _PcosexerciseState extends State<Pcosexercise> {
               ),
               SizedBox(height: 16),
               FoodCard(
-                imageUrl: 'assets/kneetochest.jpg',
+                imageUrl: 'image/pcos_exercise3.png',
                 username: 'Samira',
-                description: 'Focus on relaxation and hormone regulation.',
+                description: 'Planks are highly beneficial for women with PCOS as they strengthen the core, improve metabolism, and aid in weight management, which is crucial for managing symptoms. Benefits of Planks for PCOS Core Strength: Builds abdominal muscles, which can support hormonal balance. Improves Insulin Sensitivity: Regular practice helps with blood sugar regulation. Weight Loss: Boosts metabolism and burns calories effectively. ',
               ),
             ],
           ),

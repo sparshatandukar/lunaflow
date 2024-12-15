@@ -32,13 +32,14 @@ class _DashboardState extends State<Dashboard> {
         isLoader = true;
       });
       final user = Provider.of<UserModel?>(context, listen: false);
-      final questionData = await AuthService().getQuestionnaire(context, user!.uid);
+      final questionData =
+          await AuthService().getQuestionnaire(context, user!.uid);
       final data = await AuthService().getCurrentUser(context, user.uid);
       final nextPeriodDate = await AuthService().getNextPeriodDate(user.uid);
       setState(() {
         UserData = data.isNotEmpty ? data[0]['user'] : null;
         isLoader = false;
-        questionnaires=questionData;
+        questionnaires = questionData;
         nextPeriod = nextPeriodDate ?? DateTime.now();
       });
       print(questionData?[0]['selectedCycleLength']);
@@ -205,12 +206,13 @@ class _DashboardState extends State<Dashboard> {
                         ),
                       ),
                       const SizedBox(height: 8),
-                       Card(
+                      Card(
                           margin: const EdgeInsets.symmetric(vertical: 8.0),
                           child: ListTile(
                             title: const Text('Previous Period',
                                 style: TextStyle(fontWeight: FontWeight.bold)),
-                            subtitle: Text(questionnaires?[0]['selectedCycleLength']??"",
+                            subtitle: Text(
+                                questionnaires?[0]['selectedCycleLength'] ?? "",
                                 style: const TextStyle(fontSize: 16.0)),
                             trailing: const Row(
                               mainAxisSize: MainAxisSize.min,
@@ -227,12 +229,13 @@ class _DashboardState extends State<Dashboard> {
                               ],
                             ),
                           )),
-                       Card(
+                      Card(
                           margin: const EdgeInsets.symmetric(vertical: 8.0),
                           child: ListTile(
                             title: const Text('Previous period length',
                                 style: TextStyle(fontWeight: FontWeight.bold)),
-                            subtitle: Text(questionnaires?[0]['selectedCycleLength']??"",
+                            subtitle: Text(
+                                questionnaires?[0]['selectedCycleLength'] ?? "",
                                 style: const TextStyle(fontSize: 16.0)),
                             trailing: const Row(
                               mainAxisSize: MainAxisSize.min,
@@ -249,12 +252,13 @@ class _DashboardState extends State<Dashboard> {
                               ],
                             ),
                           )),
-                       Card(
+                      Card(
                           margin: const EdgeInsets.symmetric(vertical: 8.0),
                           child: ListTile(
                             title: const Text('Cycle length variation',
                                 style: TextStyle(fontWeight: FontWeight.bold)),
-                            subtitle: Text(questionnaires?[0]['selectedDuration']??'',
+                            subtitle: Text(
+                                questionnaires?[0]['selectedDuration'] ?? '',
                                 style: const TextStyle(fontSize: 16.0)),
                             trailing: const Row(
                               mainAxisSize: MainAxisSize.min,
@@ -271,22 +275,6 @@ class _DashboardState extends State<Dashboard> {
                               ],
                             ),
                           )),
-                      const SizedBox(height: 16),
-                      const Text(
-                        'Symptoms',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      const SizedBox(height: 8),
-                      Container(
-                        height: 100,
-                        decoration: BoxDecoration(
-                          color: Colors.grey[300],
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                      ),
                     ],
                   ),
                 ),

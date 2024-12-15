@@ -12,12 +12,11 @@ class CommunityPage extends StatefulWidget {
 }
 
 class _CommunityPageState extends State<CommunityPage> {
-
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 2,
-      child:  Scaffold(
+      child: Scaffold(
         appBar: AppBar(
           backgroundColor: const Color.fromARGB(255, 248, 248, 248),
           elevation: 0,
@@ -41,7 +40,7 @@ class _CommunityPageState extends State<CommunityPage> {
                         decoration: InputDecoration(
                           hintText: "Search...",
                           prefixIcon:
-                          Icon(Icons.search, color: Color(0xFFEEA09C)),
+                              Icon(Icons.search, color: Color(0xFFEEA09C)),
                           filled: true,
                           fillColor: Colors.white,
                           border: OutlineInputBorder(
@@ -62,7 +61,7 @@ class _CommunityPageState extends State<CommunityPage> {
           actions: [
             IconButton(
               icon: const Icon(Icons.person, color: Color(0xFFEEA09C)),
-              onPressed: () {},
+              onPressed: () { },
             ),
           ],
           bottom: TabBar(
@@ -139,8 +138,17 @@ class PCOSContent extends StatelessWidget {
                     ),
                     child: Column(
                       children: [
-                        Icon(Icons.info, color: Color(0xFFEEA09C)),
-                        Text('About PCOS'),
+                        GestureDetector(
+                          child: Column(
+                            children: [
+                              Icon(Icons.info, color: Color(0xFFEEA09C)),
+                              Text('About PCOS'),
+                            ],
+                          ),
+                          onTap: () {
+                            Navigator.pushNamed(context, '/about');
+                          },
+                        ),
                       ],
                     ),
                   ),
@@ -157,8 +165,17 @@ class PCOSContent extends StatelessWidget {
                     ),
                     child: Column(
                       children: [
-                        Icon(Icons.list, color: Color(0xFFEEA09C)),
-                        Text('PCOS Causes'),
+                        GestureDetector(
+                          child: Column(
+                            children: [
+                              Icon(Icons.list, color: Color(0xFFEEA09C)),
+                              Text('PCOS Causes'),
+                            ],
+                          ),
+                          onTap: () {
+                            Navigator.pushNamed(context, '/causes');
+                          },
+                        ),
                       ],
                     ),
                   ),
@@ -175,8 +192,18 @@ class PCOSContent extends StatelessWidget {
                     ),
                     child: Column(
                       children: [
-                        Icon(Icons.medical_services, color: Color(0xFFEEA09C)),
-                        Text('PCOS Treatment'),
+                        GestureDetector(
+                          child: Column(
+                            children: [
+                              Icon(Icons.medical_services,
+                                  color: Color(0xFFEEA09C)),
+                              Text('PCOS Treatment'),
+                            ],
+                          ),
+                          onTap: () {
+                            Navigator.pushNamed(context, '/treatments');
+                          },
+                        ),
                       ],
                     ),
                   ),
@@ -218,9 +245,18 @@ class PCOSContent extends StatelessWidget {
                   width: 100,
                   child: Column(
                     children: [
-                      Icon(Icons.local_dining,
-                          color: Color(0xFFEEA09C), size: 50),
-                      Text('Diet'),
+                      GestureDetector(
+                        child: Column(
+                          children: [
+                            Icon(Icons.local_dining,
+                                color: Color(0xFFEEA09C), size: 50),
+                            Text('Diet'),
+                          ],
+                        ),
+                        onTap: () {
+                          Navigator.pushNamed(context, '/pcosdiet');
+                        },
+                      ),
                     ],
                   ),
                 ),
@@ -233,9 +269,18 @@ class PCOSContent extends StatelessWidget {
                   width: 100,
                   child: Column(
                     children: [
-                      Icon(Icons.fitness_center,
-                          color: Color(0xFFEEA09C), size: 50),
-                      Text('Exercise'),
+                      GestureDetector(
+                        child: Column(
+                          children: [
+                            Icon(Icons.fitness_center,
+                                color: Color(0xFFEEA09C), size: 50),
+                            Text('Exercise'),
+                          ],
+                        ),
+                        onTap: () {
+                          Navigator.pushNamed(context, '/pcosexercise');
+                        },
+                      ),
                     ],
                   ),
                 ),
@@ -248,9 +293,18 @@ class PCOSContent extends StatelessWidget {
                   width: 100,
                   child: Column(
                     children: [
-                      Icon(Icons.self_improvement,
-                          color: Color(0xFFEEA09C), size: 50),
-                      Text('Lifestyle'),
+                      GestureDetector(
+                        child: Column(
+                          children: [
+                            Icon(Icons.self_improvement,
+                                color: Color(0xFFEEA09C), size: 50),
+                            Text('Lifestyle'),
+                          ],
+                        ),
+                        onTap: () {
+                          Navigator.pushNamed(context, '/pcoslifestyle');
+                        },
+                      ),
                     ],
                   ),
                 ),

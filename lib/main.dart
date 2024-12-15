@@ -6,9 +6,15 @@ import 'package:lunaflow/blogs/blogspage.dart';
 import 'package:lunaflow/landing%20page/navigate.dart';
 import 'package:lunaflow/landing%20page/welcomepage.dart';
 import 'package:lunaflow/landing%20page/welcometo.dart';
+import 'package:lunaflow/pages/about.dart';
 import 'package:lunaflow/pages/add_blog.dart';
 import 'package:lunaflow/pages/bottom_navigation.dart';
+import 'package:lunaflow/pages/causes.dart';
 import 'package:lunaflow/pages/dashboard.dart';
+import 'package:lunaflow/pages/pcosdiet.dart';
+import 'package:lunaflow/pages/pcosexercise.dart';
+import 'package:lunaflow/pages/pcoslifestyle.dart';
+import 'package:lunaflow/pages/treatment.dart';
 import 'package:lunaflow/questionnaire/Goals%20and%20Preferences/Goals.dart';
 import 'package:lunaflow/questionnaire/Goals%20and%20Preferences/Preferences.dart';
 import 'package:lunaflow/questionnaire/Health%20and%20Symptoms/Diagnose.dart';
@@ -90,10 +96,12 @@ class MyApp extends StatelessWidget {
           '/dashboard': (context) => const BottomNavigation(index: 0),
           '/community': (context) => const BottomNavigation(index: 3),
           '/add_blog': (context) => const AddBlog(),
-
-
-
-
+          '/about': (context) => const About(),
+          '/causes': (context) => const Causes(),
+          '/treatments': (context) => const Treatment(),
+          '/pcosdiet': (context) => const Pcosdiet(),
+          '/pcosexercise': (context) => const Pcosexercise(),
+          '/pcoslifestyle': (context) => const Pcoslifestyle(),
         },
       ),
     );

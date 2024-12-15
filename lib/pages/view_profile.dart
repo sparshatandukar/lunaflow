@@ -13,6 +13,7 @@ class ViewProfile extends StatefulWidget {
 class _ViewProfileState extends State<ViewProfile> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _phoneController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
 
   String error = '';
   String? email;
@@ -38,9 +39,9 @@ class _ViewProfileState extends State<ViewProfile> {
         // Populate controllers with the fetched data
         Map<String, dynamic> userData = userDoc.data() as Map<String, dynamic>;
         setState(() {
-          _nameController.text = userData['name'] ?? '';
-          _phoneController.text = userData['phone'] ?? '';
-          email = userData['email'] ?? '';
+          _nameController.text = userData['fullName'] ?? '';
+          _phoneController.text = userData['password'] ?? '';
+          _emailController.text = userData['email'] ?? '';
         });
       } else {
         setState(() {
@@ -113,22 +114,24 @@ class _ViewProfileState extends State<ViewProfile> {
             TextField(
               controller: _phoneController,
               decoration: const InputDecoration(
-                labelText: "Phone Number",
+                labelText: "Password",
                 border: OutlineInputBorder(),
+                enabled: false,
               ),
             ),
             const SizedBox(height: 16),
 
             // Email field (read-only)
-            if (email != null)
-              TextField(
-                decoration: InputDecoration(
-                  labelText: "Email",
-                  border: const OutlineInputBorder(),
-                  hintText: email,
-                  enabled: false, // Make the email field read-only
-                ),
+
+            TextField(
+              controller: _emailController,
+              decoration: InputDecoration(
+                labelText: "Email",
+                border: const OutlineInputBorder(),
+                hintText: email,
+                enabled: false, // Make the email field read-only
               ),
+            ),
             const SizedBox(height: 16),
 
             // Save button

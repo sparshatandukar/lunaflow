@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:lunaflow/pages/pcosexercise.dart';
 import 'package:lunaflow/pages/pcoslifestyle.dart';
 
-
 class Pcosdiet extends StatelessWidget {
   const Pcosdiet({super.key});
 
@@ -59,24 +58,24 @@ class Pcosdiet extends StatelessWidget {
                 child: Column(
                   children: const [
                     FoodCard(
-                      imageUrl: 'assets/dietspinach.jpg',
+                      imageUrl: 'image/pcos_diet1.png',
                       username: 'Samira',
                       description:
-                      'Leafy greens like spinach are excellent for PCOS.',
+                          '.Include Anti-Inflammatory Foods Examples: Fatty fish (salmon, mackerel), turmeric, ginger, and green tea. Benefit: Reduces inflammation and improves hormonal balance',
                     ),
                     SizedBox(height: 32),
                     FoodCard(
-                      imageUrl: 'assets/dietdarkchoco.jpg',
+                      imageUrl: 'image/pcos_diet2.png',
                       username: 'Samira',
                       description:
-                      'Dark chocolate is a healthy treat rich in magnesium.',
+                          ' Healthy Fats are Essential Examples: Avocados, nuts, seeds, and olive oil. Benefit: Promotes hormone production and reduces inflammation. ',
                     ),
                     SizedBox(height: 32),
                     FoodCard(
-                      imageUrl: 'assets/dietdarkchoco.jpg',
+                      imageUrl: 'image/pcos_diet3.png',
                       username: 'Samira',
                       description:
-                      'Dark chocolate is a healthy treat rich in magnesium.',
+                          '.Protein-Rich Meals Examples: Eggs, lean chicken, tofu, and Greek yogurt. Benefit: Stabilizes blood sugar and promotes satiety. ',
                     ),
                   ],
                 ),

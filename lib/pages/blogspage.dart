@@ -57,9 +57,14 @@ class _BlogsPageState extends State<BlogsPage> {
             labelColor: Colors.black,
             unselectedLabelColor: Colors.grey,
             tabs: const [
-              Tab(text: "Diet"),
-              Tab(text: "Exercise"),
-              Tab(text: "Lifestyle"),
+    SizedBox(width: 300, child: Tab(text: "Diet")),
+    SizedBox(width: 300, child: Tab(text: "Exercise")),
+    SizedBox(
+    width: 300,
+    child: Tab(
+    text: "Life-style",
+    ),
+    ),
             ],
           ),
         ),
