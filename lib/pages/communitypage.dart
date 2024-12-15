@@ -60,7 +60,7 @@ class _CommunityPageState extends State<CommunityPage> {
           ),
           actions: [
             IconButton(
-              icon: const Icon(Icons.person, color: Color(0xFFEEA09C)),
+              icon: const Icon(Icons.chat_outlined, color: Color(0xFFEEA09C)),
               onPressed: () { },
             ),
           ],

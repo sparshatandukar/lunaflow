@@ -70,7 +70,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
               label: 'Community',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.message_outlined),
+              icon: Icon(Icons.person),
               label: 'view profile',
             ),
           ],

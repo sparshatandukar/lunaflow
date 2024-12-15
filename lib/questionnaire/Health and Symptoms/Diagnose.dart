@@ -14,7 +14,7 @@ class _DiagnoseState extends State<Diagnose> {
   final List<String> conditions = [
     'PCOS',
     'Endometriosis',
-    'Others',
+    'No',
   ];
   final Set<String> selectedConditions = {};
 
