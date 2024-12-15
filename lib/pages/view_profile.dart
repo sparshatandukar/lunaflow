@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -17,6 +20,8 @@ class _ViewProfileState extends State<ViewProfile> {
 
   String error = '';
   String? email;
+  Uint8List? imageBytes;
+  String _base64Image = "";
 
   @override
   void initState() {
@@ -41,6 +46,17 @@ class _ViewProfileState extends State<ViewProfile> {
         setState(() {
           _nameController.text = userData['fullName'] ?? '';
           _phoneController.text = userData['password'] ?? '';
+          final base64Image = userData['image'] ?? '';
+
+
+            try {
+              imageBytes =
+                  base64Decode(base64Image); // Decode base64 image data
+            } catch (e) {
+              print('Error decoding base64: $e');
+              imageBytes = null; // Handle decoding error
+            }
+
           _emailController.text = userData['email'] ?? '';
         });
       } else {
@@ -83,8 +99,11 @@ class _ViewProfileState extends State<ViewProfile> {
             Stack(
               alignment: Alignment.bottomRight,
               children: [
-                const CircleAvatar(
-                    radius: 50, backgroundImage: AssetImage('image/luna.png')),
+                CircleAvatar(
+                    radius: 50, backgroundImage: imageBytes != null
+                    ? MemoryImage(imageBytes! ) // Display decoded image
+                    : const AssetImage('assets/userprofile.jpg')
+                as ImageProvider,),
                 CircleAvatar(
                   radius: 16,
                   backgroundColor: Colors.blue,

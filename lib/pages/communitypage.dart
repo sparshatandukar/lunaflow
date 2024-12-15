@@ -30,6 +30,7 @@ class _CommunityPageState extends State<CommunityPage> {
                     icon: const Icon(Icons.add, color: Color(0xFFEEA09C)),
                     onPressed: () {
                       Navigator.pushNamed(context, '/add_blog');
+
                     },
                   ),
                   Expanded(
@@ -61,7 +62,8 @@ class _CommunityPageState extends State<CommunityPage> {
           actions: [
             IconButton(
               icon: const Icon(Icons.chat_outlined, color: Color(0xFFEEA09C)),
-              onPressed: () { },
+              onPressed: () { Navigator.pushNamed(context, '/community_chat');},
+
             ),
           ],
           bottom: TabBar(

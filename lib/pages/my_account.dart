@@ -3,7 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:lunaflow/authentication/login.dart';
 import 'package:lunaflow/pages/view_profile.dart';
-
+import 'dart:convert';
+import 'dart:typed_data';
 class MyAccount extends StatefulWidget {
   const MyAccount({super.key});
 
@@ -15,6 +16,8 @@ class _MyAccountState extends State<MyAccount> {
   User? user; // To store the current user's data
   String? fullName;
   String? email;
+  Uint8List? imageBytes;
+  String _base64Image = "";
   @override
   void initState() {
     super.initState();
@@ -38,6 +41,17 @@ class _MyAccountState extends State<MyAccount> {
         setState(() {
           fullName = userData['fullName'] ?? '';
           email = userData['email'] ?? '';
+          final base64Image = userData['image'] ?? '';
+
+
+            try {
+              imageBytes =
+                  base64Decode(base64Image); // Decode base64 image data
+            } catch (e) {
+              print('Error decoding base64: $e');
+              imageBytes = null; // Handle decoding error
+            }
+
         });
       }
     } catch (e) {
@@ -60,7 +74,10 @@ class _MyAccountState extends State<MyAccount> {
                     children: [
                       const SizedBox(height: 20),
                       CircleAvatar(
-                        foregroundImage: const AssetImage('image/acne.png'),
+                        foregroundImage: imageBytes != null
+          ? MemoryImage(imageBytes!) // Display decoded image
+              : const AssetImage('assets/userprofile.jpg')
+          as ImageProvider,
                         maxRadius: 50,
                         child: Align(
                           alignment: Alignment.bottomRight,

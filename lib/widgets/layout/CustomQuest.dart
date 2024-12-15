@@ -16,6 +16,7 @@ class _CustomquestState extends State<Customquest> {
       style: const TextStyle(
         fontSize: 30,
       ),
+      textAlign: TextAlign.center,
     );
   }
 }

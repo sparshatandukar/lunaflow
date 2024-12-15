@@ -10,6 +10,7 @@ import 'package:lunaflow/pages/about.dart';
 import 'package:lunaflow/pages/add_blog.dart';
 import 'package:lunaflow/pages/bottom_navigation.dart';
 import 'package:lunaflow/pages/causes.dart';
+import 'package:lunaflow/pages/communitychat.dart';
 import 'package:lunaflow/pages/dashboard.dart';
 import 'package:lunaflow/pages/pcosdiet.dart';
 import 'package:lunaflow/pages/pcosexercise.dart';
@@ -103,6 +104,7 @@ class MyApp extends StatelessWidget {
           '/pcosdiet': (context) => const Pcosdiet(),
           '/pcosexercise': (context) => const Pcosexercise(),
           '/pcoslifestyle': (context) => const Pcoslifestyle(),
+          '/community_chat': (context) => const CommunityChat(),
         },
       ),
     );
